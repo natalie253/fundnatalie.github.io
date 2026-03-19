@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Updates | Natalie Sorensen</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+  /* PAGE HEADER */
+  .page-header {
+    padding: 120px 3rem 4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2rem;
+  }
+
+  .page-header-left .eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+
+  .page-header-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+    line-height: 1.15;
+    color: var(--ink);
+  }
+
+  .page-header-sub {
+    font-size: 0.95rem;
+    color: var(--ink-mid);
+    max-width: 420px;
+    line-height: 1.7;
+    margin-top: 1rem;
+  }
+
+  /* STATUS BOARD */
+  .status-board {
+    background: var(--warm);
+    padding: 3rem 0;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .status-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 3rem;
+  }
+
+  .status-heading {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 1.5rem;
+  }
+
+  .status-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .status-card {
+    background: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 1.25rem 1.5rem;
+  }
+
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin-bottom: 0.75rem;
+  }
+
+  .badge-active {
+    background: #e6f2ee;
+    color: var(--teal);
+  }
+
+  .badge-progress {
+    background: #fef3e2;
+    color: #b07d1a;
+  }
+
+  .badge-upcoming {
+    background: #ede8f7;
+    color: #6148b0;
+  }
+
+  .badge-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+
+  .status-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.35rem;
+    line-height: 1.4;
+  }
+
+  .status-desc {
+    font-size: 0.8rem;
+    color: var(--ink-light);
+    line-height: 1.6;
+  }
+
+  /* MAIN CONTENT LAYOUT */
+  .content-area {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 4rem 3rem;
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  /* POSTS */
+  .posts-feed { }
+
+  .feed-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 2rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .post-card {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .post-card:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .post-date {
+    font-size: 0.78rem;
+    color: var(--ink-light);
+  }
+
+  .post-tag {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    padding: 2px 10px;
+    border-radius: 100px;
+    background: var(--teal-light);
+    color: var(--teal);
+  }
+
+  .post-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.5rem;
+    color: var(--ink);
+    line-height: 1.25;
+    margin-bottom: 0.75rem;
+  }
+
+  .post-body p {
+    font-size: 0.95rem;
+    color: var(--ink-mid);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .post-body p strong { color: var(--ink); font-weight: 500; }
+  .post-body p:last-child { margin-bottom: 0; }
+
+  .post-readmore {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.82rem;
+    color: var(--teal);
+    font-weight: 500;
+    text-decoration: none;
+    margin-top: 0.75rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: 'DM Sans', sans-serif;
+    transition: gap 0.15s;
+  }
+
+  .post-readmore:hover { gap: 9px; }
+
+  .post-expanded {
+    display: none;
+    margin-top: 1rem;
+  }
+
+  .post-expanded.open { display: block; }
+
+  /* SIDEBAR */
+  .sidebar { }
+
+  .sidebar-section {
+    margin-bottom: 2.5rem;
+  }
+
+  .sidebar-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  /* TIMELINE */
+  .timeline { }
+
+  .timeline-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+
+  .timeline-line {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .timeline-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--teal);
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+
+  .timeline-dot.future {
+    background: #fff;
+    border: 2px solid var(--border-color);
+  }
+
+  .timeline-connector {
+    width: 1px;
+    flex: 1;
+    background: var(--border-color);
+    margin: 4px 0;
+    min-height: 20px;
+  }
+
+  .timeline-content { padding-bottom: 0.25rem; }
+
+  .timeline-date {
+    font-size: 0.72rem;
+    color: var(--ink-light);
+    margin-bottom: 2px;
+  }
+
+  .timeline-title {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+
+  .timeline-item.future .timeline-title { color: var(--ink-light); }
+
+  /* GOALS CARD */
+  .goals-card {
+    background: var(--teal);
+    border-radius: 14px;
+    padding: 1.5rem;
+  }
+
+  .goals-card-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    color: #fff;
+    margin-bottom: 1rem;
+  }
+
+  .goal-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 0.875rem;
+    padding-bottom: 0.875rem;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+  }
+
+  .goal-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  .goal-check {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .goal-check svg {
+    width: 10px; height: 10px;
+    stroke: #fff;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .goal-text {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.5;
+  }
+
+  /* PAGE CTA */
+  .page-cta-bar {
+    background: var(--warm);
+    border-top: 1px solid var(--border-color);
+    padding: 4rem 3rem;
+    text-align: center;
+  }
+
+  .page-cta-bar .section-title { margin: 0.75rem auto 1rem; max-width: 500px; }
+  .page-cta-bar p { color: var(--ink-mid); max-width: 400px; margin: 0 auto 2rem; font-size: 0.95rem; }
+
+  .btn-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .content-area { grid-template-columns: 1fr; gap: 3rem; }
+    .sidebar { order: -1; }
+    .status-grid { grid-template-columns: 1fr; }
+    .page-header { flex-direction: column; align-items: flex-start; padding: 100px 1.75rem 3rem; }
+    .status-inner { padding: 0 1.75rem; }
+    .content-area { padding: 3rem 1.75rem; }
+    .page-cta-bar { padding: 3.5rem 1.75rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo">Natalie Sorensen</a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="about.html" class="nav-link">About Me</a>
+    <a href="updates.html" class="nav-link active">Updates</a>
+    <a href="index.html" class="nav-cta">Donate</a>
+  </div>
+  <button class="nav-hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html">Home</a>
+  <a href="about.html">About Me</a>
+  <a href="updates.html">Updates</a>
+  <a href="index.html">Donate</a>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-left fade-in">
+    <span class="eyebrow">Latest updates</span>
+    <h1 class="page-header-title">What I'm working on.</h1>
+    <p class="page-header-sub">Progress reports, research updates, and honest reflections on the road toward an MD/PhD.</p>
+  </div>
+</div>
+
+<!-- STATUS BOARD -->
+<section class="status-board">
+  <div class="status-inner">
+    <p class="status-heading">Current status — March 2026</p>
+    <div class="status-grid">
+      <div class="status-card fade-in">
+        <span class="status-badge badge-active"><span class="badge-dot"></span>Active</span>
+        <p class="status-title">MS thesis research at UCSF</p>
+        <p class="status-desc">Continuing KLF5 metastasis driver project; analyzing IVIS imaging data from 50-mouse cohort.</p>
+      </div>
+      <div class="status-card fade-in" style="transition-delay:0.1s">
+        <span class="status-badge badge-active"><span class="badge-dot"></span>Active</span>
+        <p class="status-title">Teaching anatomy at SFSU</p>
+        <p class="status-desc">Lecturing and leading cadaver labs for 24 students; grading across 300+ enrolled students.</p>
+      </div>
+      <div class="status-card fade-in" style="transition-delay:0.2s">
+        <span class="status-badge badge-active"><span class="badge-dot"></span>Active</span>
+        <p class="status-title">Interviewing with Oxford DPhil program</p>
+        <p class="status-desc">Currently in the interview process for Oxford's DPhil in tumor immunology — my dream program.</p>
+      </div>
+      <div class="status-card fade-in" style="transition-delay:0.3s">
+        <span class="status-badge badge-active"><span class="badge-dot"></span>Active</span>
+        <p class="status-title">SOMA Club — founding year</p>
+        <p class="status-desc">Running workshops and academic programming as founder and president of the anatomy club at SFSU.</p>
+      </div>
+      <div class="status-card fade-in" style="transition-delay:0.4s">
+        <span class="status-badge badge-progress"><span class="badge-dot"></span>In progress</span>
+        <p class="status-title">Thesis writing</p>
+        <p class="status-desc">Writing up MS thesis on chromatin accessibility and transcription factor networks in osteosarcoma.</p>
+      </div>
+      <div class="status-card fade-in" style="transition-delay:0.5s">
+        <span class="status-badge badge-upcoming"><span class="badge-dot"></span>Upcoming</span>
+        <p class="status-title">Agents of Change Build Fellowship</p>
+        <p class="status-desc">2026 fellowship cohort — building skills and community in the SF civic tech and science space.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN CONTENT + SIDEBAR -->
+<div class="content-area">
+
+  <!-- POSTS -->
+  <div class="posts-feed">
+    <p class="feed-label">Recent posts</p>
+
+    <!-- POST 1 -->
+    <article class="post-card fade-in">
+      <div class="post-meta">
+        <span class="post-date">March 2026</span>
+        <span class="post-tag">Research</span>
+      </div>
+      <h2 class="post-title">KLF5 results are in — and they're pointing somewhere real.</h2>
+      <div class="post-body">
+        <p>
+          After months of monitoring our 50-mouse cohort through IVIS imaging, we're starting to see a signal. Preliminary results suggest that KLF5 overexpression accelerates primary tumor progression and increases metastatic burden — while knockouts show the opposite. <strong>This positions KLF5 as both a potential prognostic biomarker and a therapeutic target.</strong>
+        </p>
+        <p>
+          There's still a lot of analysis ahead, but seeing functional in vivo data line up with the molecular predictions from our CUT&RUN work is genuinely exciting.
+        </p>
+      </div>
+      <button class="post-readmore" onclick="togglePost('post1')">
+        Read more <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="post-expanded" id="post1">
+        <div class="post-body">
+          <p>
+            When I started this project, one of the harder decisions was how to prioritize what to measure. In a discussion with my mentor, I proposed capturing both terminal metastatic burden (a cleaner endpoint) and longitudinal tumor kinetics via repeated IVIS imaging. We went with both — and that decision is now paying off because we can see <em>when</em> the divergence begins, not just where it ends up.
+          </p>
+          <p>
+            Next steps involve more detailed histopathological analysis of the tumor samples, and we're planning to validate the KLF5 expression changes with additional molecular work. I'm also starting to write up the methods section for what will hopefully be a manuscript later this year.
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <!-- POST 2 -->
+    <article class="post-card fade-in">
+      <div class="post-meta">
+        <span class="post-date">February 2026</span>
+        <span class="post-tag">Personal</span>
+      </div>
+      <h2 class="post-title">Why I started this fundraiser — and what it actually pays for.</h2>
+      <div class="post-body">
+        <p>
+          A few people have asked me why I'm doing this publicly instead of just applying for more grants. The honest answer: research grants fund the science — reagents, animal care, sequencing runs. They don't fund the scientist doing it.
+        </p>
+        <p>
+          Graduate researchers at funded programs typically receive a stipend of $25,000–35,000 a year. I do equivalent work without that support. Every day I drive to UCSF's Mission Bay campus costs me $150/month in parking alone — on top of student loans, a failing laptop, and application fees that topped $2,000 this cycle. <strong>None of that is a personal expense. It's the hidden cost of doing science without institutional backing.</strong>
+        </p>
+      </div>
+      <button class="post-readmore" onclick="togglePost('post2why')">
+        Read more <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="post-expanded" id="post2why">
+        <div class="post-body">
+          <p>
+            MD/PhD applications cost money — application fees across programs can easily exceed $2,000. Conference travel isn't always covered. Thesis-year expenses pile up. And unlike some of my peers, I don't have a financial safety net.
+          </p>
+          <p>
+            I'm not asking for charity. I'm asking for a bridge — one that lets me focus on the work instead of calculating whether I can afford to apply to one more program or attend one more conference. Every bit helps, and I'm genuinely grateful for anyone who reads this far.
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <!-- POST 3 - SOMA -->
+    <article class="post-card fade-in">
+      <div class="post-meta">
+        <span class="post-date">January 2026</span>
+        <span class="post-tag">Community</span>
+      </div>
+      <h2 class="post-title">I started a club, and it already has 30 members.</h2>
+      <div class="post-body">
+        <p>
+          I founded SOMA — the Systems-Oriented Medical Anatomy Club — at SFSU this semester, and the response exceeded what I imagined. Thirty students showed up to the first meeting, including pre-med, pre-PA, nursing, and biology students who don't usually share a learning space.
+        </p>
+        <p>
+          The goal is simple: connect anatomy to its clinical meaning. We run workshops on things like what actually happens during a thoracotomy, or how anatomical variation affects surgical planning. <strong>It's the kind of learning I wish I'd had access to earlier</strong> — the kind that makes the body feel like a living system, not a list of structures to memorize.
+        </p>
+      </div>
+      <button class="post-readmore" onclick="togglePost('post3soma')">
+        Read more <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="post-expanded" id="post3soma">
+        <div class="post-body">
+          <p>
+            What I didn't anticipate was how much students were craving this kind of cross-disciplinary community. We've had students bring clinical cases from their shadowing hours, students who want to present research, and students who just want a room where it's okay to ask "but why does that actually matter?"
+          </p>
+          <p>
+            Running SOMA alongside my research and teaching load is a lot — but it's also the most energizing thing I do each week. The club is a reminder of why mentorship matters: because someone has to create the spaces that didn't exist when you needed them.
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <!-- POST 4 -->
+    <article class="post-card fade-in">
+      <div class="post-meta">
+        <span class="post-date">February 2026</span>
+        <span class="post-tag">Personal</span>
+      </div>
+      <h2 class="post-title">My first publication is out in Cancer Discovery.</h2>
+      <div class="post-body">
+        <p>
+          The paper is officially published. I'm listed as a co-author on a study mapping epigenetic and transcriptional programs that define osteosarcoma subtypes — work I contributed to through immunofluorescence experiments and IHC methods sections.
+        </p>
+        <p>
+          Seeing my name on a Cancer Discovery paper is something I genuinely didn't know was possible for someone like me two years ago. It matters — not just on a CV, but as proof that the path I'm on is real.
+        </p>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="sidebar-section fade-in">
+      <p class="sidebar-label">Road ahead — timeline</p>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-line">
+            <div class="timeline-dot"></div>
+            <div class="timeline-connector"></div>
+          </div>
+          <div class="timeline-content">
+            <p class="timeline-date">2025</p>
+            <p class="timeline-title">Cancer Discovery publication</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-line">
+            <div class="timeline-dot"></div>
+            <div class="timeline-connector"></div>
+          </div>
+          <div class="timeline-content">
+            <p class="timeline-date">Jan 2026</p>
+            <p class="timeline-title">Founded SOMA Club at SFSU</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-line">
+            <div class="timeline-dot"></div>
+            <div class="timeline-connector"></div>
+          </div>
+          <div class="timeline-content">
+            <p class="timeline-date">2026</p>
+            <p class="timeline-title">Agents of Change Build Fellow</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-line">
+            <div class="timeline-dot"></div>
+            <div class="timeline-connector"></div>
+          </div>
+          <div class="timeline-content">
+            <p class="timeline-date">May 2026</p>
+            <p class="timeline-title">MS in Biomedical Science (expected)</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-line">
+            <div class="timeline-dot future"></div>
+            <div class="timeline-connector"></div>
+          </div>
+          <div class="timeline-content">
+            <p class="timeline-date">2026 — interviewing now</p>
+            <p class="timeline-title">Oxford DPhil — tumor immunology (dream program)</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-line">
+            <div class="timeline-dot future"></div>
+          </div>
+          <div class="timeline-content">
+            <p class="timeline-date">Future</p>
+            <p class="timeline-title">Run a translational oncology research lab</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-section fade-in" style="transition-delay:0.1s">
+      <div class="goals-card">
+        <p class="goals-card-title">Long-term goals</p>
+        <div class="goal-item">
+          <div class="goal-check">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <p class="goal-text">Complete MS in Biomedical Science</p>
+        </div>
+        <div class="goal-item">
+          <div class="goal-check" style="background:rgba(255,255,255,0.08)"></div>
+          <p class="goal-text">Enter a combined MD/PhD program</p>
+        </div>
+        <div class="goal-item">
+          <div class="goal-check" style="background:rgba(255,255,255,0.08)"></div>
+          <p class="goal-text">Complete doctoral research in tumor immunology or epigenomics</p>
+        </div>
+        <div class="goal-item">
+          <div class="goal-check" style="background:rgba(255,255,255,0.08)"></div>
+          <p class="goal-text">Train as a physician-scientist in pediatric oncology</p>
+        </div>
+        <div class="goal-item">
+          <div class="goal-check" style="background:rgba(255,255,255,0.08)"></div>
+          <p class="goal-text">Lead an independent translational research lab</p>
+        </div>
+      </div>
+    </div>
+
+  </aside>
+</div>
+
+<!-- PAGE CTA -->
+<div class="page-cta-bar">
+  <div class="fade-in">
+    <p class="section-label">Make an impact</p>
+    <h2 class="section-title">Help fund the next update.</h2>
+    <p>Every milestone on that timeline has a cost. Your support helps make sure finances aren't the thing that slows this down.</p>
+    <div class="btn-group">
+      <a href="index.html" class="btn-primary">Donate now</a>
+      <a href="about.html" class="btn-ghost">Read my story</a>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <span>© 2026 Natalie Sorensen · Daly City, CA</span>
+  <span>Questions? <a href="/cdn-cgi/l/email-protection#a4cac5d0c5c8cdc1e4d7cbd6c1cad7ca8ac7cbc9"><span class="__cf_email__" data-cfemail="1e707f6a7f72777b5e6d716c7b706d70307d7173">[email&#160;protected]</span></a></span>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="shared.js"></script>
+<script>
+  function togglePost(id) {
+    const el = document.getElementById(id);
+    const btn = el.previousElementSibling;
+    el.classList.toggle('open');
+    const isOpen = el.classList.contains('open');
+    btn.innerHTML = isOpen
+      ? 'Show less <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></sv
