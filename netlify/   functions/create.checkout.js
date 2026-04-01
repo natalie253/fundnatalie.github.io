@@ -65,3 +65,19 @@ exports.handler = async (event) => {
     };
   }
 };
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+{
+  "name": "fundnatalie",
+  "version": "1.0.0",
+  "description": "Natalie Sorensen Oxford fundraising site",
+  "dependencies": {
+    "stripe": "^14.0.0"
+  }
+}
