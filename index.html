@@ -552,7 +552,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; height: 66px; di
 
 <footer class="site-footer">
   <span>2026 Natalie Sorensen, Valencia, CA</span>
-  <span>Questions? <a href="/cdn-cgi/l/email-protection#a8ceddc6ccc6c9dcc9c4c1cde8dbc7dacdc6dbc686cbc7c5"><span class="__cf_email__" data-cfemail="c2a4b7aca6aca3b6a3aeaba782b1adb0a7acb1aceca1adaf">[email&#160;protected]</span></a></span>
+  <span>Questions? <a href="mailto:fundnatalie@sorensn.com">fundnatalie@sorensn.com</a></span>
 </footer>
 
 
@@ -714,7 +714,7 @@ async function idxDonate() {
     if (!contentType.includes("application/json")) {
       const text = await res.text();
       console.error("Non-JSON response:", text);
-      alert("Payment service unavailable. Please try again shortly or email natalie@sorensn.com");
+      alert("Payment service unavailable. Please try again shortly or email fundnatalie@sorensn.com");
       return;
     }
 
@@ -723,11 +723,11 @@ async function idxDonate() {
       window.location.href = data.url;
     } else {
       console.error("Stripe error:", data.error);
-      alert("Error: " + (data.error || "Something went wrong. Please email natalie@sorensn.com"));
+      alert("Error: " + (data.error || "Something went wrong. Please email fundnatalie@sorensn.com"));
     }
   } catch (err) {
     console.error(err);
-    alert("Something went wrong. Please try again or email natalie@sorensn.com");
+    alert("Something went wrong. Please try again or email fundnatalie@sorensn.com");
   } finally {
     btn.textContent = "Donate now";
     btn.disabled = false;
@@ -846,7 +846,7 @@ async function m1Donate() {
     });
     const contentType = res.headers.get("content-type") || "";
     if (!contentType.includes("application/json")) {
-      alert("Payment service unavailable. Please email natalie@sorensn.com");
+      alert("Payment service unavailable. Please email fundnatalie@sorensn.com");
       return;
     }
     const data = await res.json();
@@ -857,7 +857,7 @@ async function m1Donate() {
     }
   } catch (err) {
     console.error(err);
-    alert("Something went wrong. Please try again or email natalie@sorensn.com");
+    alert("Something went wrong. Please try again or email fundnatalie@sorensn.com");
   } finally {
     if (btn) { btn.textContent = "Donate now"; btn.disabled = false; }
   }
@@ -946,7 +946,7 @@ async function idxDonate() {
     if (!contentType.includes("application/json")) {
       const text = await res.text();
       console.error("Non-JSON response:", text);
-      alert("Payment service unavailable. Please try again shortly or email natalie@sorensn.com");
+      alert("Payment service unavailable. Please try again shortly or email fundnatalie@sorensn.com");
       return;
     }
 
@@ -955,11 +955,11 @@ async function idxDonate() {
       window.location.href = data.url;
     } else {
       console.error("Stripe error:", data.error);
-      alert("Error: " + (data.error || "Something went wrong. Please email natalie@sorensn.com"));
+      alert("Error: " + (data.error || "Something went wrong. Please email fundnatalie@sorensn.com"));
     }
   } catch (err) {
     console.error(err);
-    alert("Something went wrong. Please try again or email natalie@sorensn.com");
+    alert("Something went wrong. Please try again or email fundnatalie@sorensn.com");
   } finally {
     btn.textContent = "Donate now";
     btn.disabled = false;
