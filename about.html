@@ -413,7 +413,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:66px;display:flex;ali
 </div>
 <footer class="site-footer">
   <span>2026 Natalie Sorensen, Valencia, CA</span>
-  <span>Questions? <a href="/cdn-cgi/l/email-protection#8ee8fbe0eae0effaefe2e7ebcefde1fcebe0fde0a0ede1e3"><span class="__cf_email__" data-cfemail="f096859e949e9184919c9995b0839f82959e839ede939f9d">[email&#160;protected]</span></a></span>
+  <span>Questions? <a href="mailto:fundnatalie@sorensn.com">fundnatalie@sorensn.com</a></span>
 </footer>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><div class="modal-overlay" id="modal1-overlay" onclick="closeModal1Outside(event)">
   <div class="modal">
@@ -592,7 +592,7 @@ async function m1Donate() {
     });
     const contentType = res.headers.get("content-type") || "";
     if (!contentType.includes("application/json")) {
-      alert("Payment service unavailable. Please email natalie@sorensn.com");
+      alert("Payment service unavailable. Please email fundnatalie@sorensn.com");
       return;
     }
     const data = await res.json();
@@ -600,7 +600,7 @@ async function m1Donate() {
     else { alert("Error: " + (data.error || "Something went wrong.")); }
   } catch (err) {
     console.error(err);
-    alert("Something went wrong. Please try again or email natalie@sorensn.com");
+    alert("Something went wrong. Please try again or email fundnatalie@sorensn.com");
   } finally {
     if (btn) { btn.textContent = "Donate now"; btn.disabled = false; }
   }
