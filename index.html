@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Support Natalie Sorensen | PhD Candidate, Oxford</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --slate: #1c1f26; --slate-mid: #2a2e38; --slate-light: #363c4a;
+  --gold: #c9a84c; --gold-light: #e8d49e; --gold-muted: #f5edd8;
+  --cream: #faf7f2; --warm-white: #f0ece4;
+  --text: #1c1f26; --text-mid: #4a4e5a; --text-light: #7a7e8a;
+  --border: rgba(28,31,38,0.1); --border-light: rgba(28,31,38,0.06);
+  --radius: 12px; --radius-lg: 18px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--text); line-height: 1.7; font-size: 16px; }
+
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; height: 66px; display: flex; align-items: center; justify-content: space-between; padding: 0 3rem; background: rgba(250,247,242,0.95); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); }
+.nav-logo { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--slate); text-decoration: none; }
+.nav-links { display: flex; align-items: center; gap: 2.25rem; }
+.nav-link { font-size: 0.85rem; color: var(--text-mid); text-decoration: none; transition: color 0.15s; }
+.nav-link:hover, .nav-link.active { color: var(--slate); }
+.nav-cta { background: var(--gold); color: var(--slate); font-size: 0.82rem; font-weight: 500; padding: 9px 22px; border-radius: 100px; text-decoration: none; transition: background 0.15s; }
+.nav-cta:hover { background: var(--gold-light); }
+.nav-hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+.nav-hamburger span { display: block; width: 22px; height: 1.5px; background: var(--slate); border-radius: 2px; }
+.mobile-menu { display: none; position: fixed; top: 66px; left: 0; right: 0; background: var(--cream); border-bottom: 1px solid var(--border); padding: 1.25rem 2rem 1.75rem; z-index: 199; flex-direction: column; gap: 1rem; }
+.mobile-menu.open { display: flex; }
+.mobile-menu a { font-size: 1rem; color: var(--text); text-decoration: none; padding: 0.5rem 0; border-bottom: 1px solid var(--border-light); }
+
+.hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 66px; }
+.hero-left { background: var(--slate); padding: 3.5rem 3rem 4rem 4rem; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
+.hero-left::before { content: ''; position: absolute; width: 400px; height: 400px; border-radius: 50%; border: 1px solid rgba(201,168,76,0.12); top: -100px; right: -150px; }
+.hero-left::after { content: ''; position: absolute; width: 250px; height: 250px; border-radius: 50%; border: 1px solid rgba(201,168,76,0.08); bottom: -80px; left: -80px; }
+.hero-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; position: relative; z-index: 1; }
+.hero-title { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 3.5vw, 3.6rem); line-height: 1.1; color: #fff; margin-bottom: 1.5rem; position: relative; z-index: 1; }
+.hero-title em { font-style: italic; color: var(--gold-light); }
+.hero-sub { font-size: 0.95rem; font-weight: 300; color: rgba(255,255,255,0.65); line-height: 1.8; max-width: 380px; margin-bottom: 2.5rem; position: relative; z-index: 1; }
+.hero-cta { display: inline-flex; align-items: center; gap: 10px; background: var(--gold); color: var(--slate); font-size: 0.875rem; font-weight: 500; padding: 14px 28px; border-radius: 100px; text-decoration: none; width: fit-content; transition: background 0.15s, transform 0.2s, box-shadow 0.2s; position: relative; z-index: 1; }
+.hero-cta:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.25); }
+
+.hero-right { background: var(--warm-white); padding: 3rem 3.5rem 3rem 3rem; display: flex; flex-direction: column; justify-content: center; gap: 1.5rem; overflow-y: auto; }
+
+.carousel-wrap { position: relative; border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 16/9; background: var(--slate-light); flex-shrink: 0; }
+.carousel-track { display: flex; height: 100%; transition: transform 0.45s cubic-bezier(0.4,0,0.2,1); }
+.carousel-slide { min-width: 100%; height: 100%; position: relative; }
+.carousel-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.carousel-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(28,31,38,0.7)); padding: 2rem 1.25rem 0.875rem; color: rgba(255,255,255,0.9); font-size: 0.75rem; }
+.carousel-controls { position: absolute; top: 50%; transform: translateY(-50%); width: 100%; display: flex; justify-content: space-between; padding: 0 10px; pointer-events: none; }
+.carousel-btn { width: 34px; height: 34px; border-radius: 50%; background: rgba(250,247,242,0.92); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; pointer-events: all; transition: background 0.15s, transform 0.15s; }
+.carousel-btn:hover { background: #fff; transform: scale(1.08); }
+.carousel-btn svg { width: 15px; height: 15px; stroke: var(--slate); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.carousel-dots { display: flex; justify-content: center; gap: 5px; margin-top: -0.75rem; }
+.dot { width: 5px; height: 5px; border-radius: 50%; background: var(--border); cursor: pointer; transition: background 0.2s, transform 0.2s; }
+.dot.active { background: var(--gold); transform: scale(1.4); }
+
+.goals-panel { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; }
+.goals-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; }
+.goals-header-title { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--slate); }
+.total-journey { text-align: right; }
+.total-journey-num { font-family: 'Playfair Display', serif; font-size: 0.95rem; color: var(--gold); }
+.total-journey-label { font-size: 0.65rem; color: var(--text-light); letter-spacing: 0.05em; text-transform: uppercase; }
+.goal-bar { margin-bottom: 1.1rem; }
+.goal-bar:last-of-type { margin-bottom: 0; }
+.goal-bar-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.4rem; }
+.goal-bar-name { font-size: 0.8rem; font-weight: 500; color: var(--text); }
+.goal-bar-name span { font-weight: 300; color: var(--text-light); font-size: 0.72rem; margin-left: 0.4rem; }
+.goal-bar-raised { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--slate); }
+.goal-bar-of { font-size: 0.72rem; color: var(--text-light); }
+.progress-track { height: 6px; background: var(--gold-muted); border-radius: 100px; overflow: hidden; margin-bottom: 0.35rem; }
+.progress-fill { height: 100%; width: 0%; background: var(--gold); border-radius: 100px; transition: width 1.8s cubic-bezier(0.4,0,0.2,1); }
+.progress-fill-move { background: var(--slate); }
+.goal-bar-meta { display: flex; justify-content: space-between; font-size: 0.7rem; color: var(--text-light); }
+.goal-bar-meta strong { color: var(--text); font-weight: 500; }
+.goal-bar-divider { height: 1px; background: var(--border-light); margin: 1.1rem 0; }
+.goals-note { font-size: 0.7rem; color: var(--text-light); line-height: 1.55; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-light); }
+
+.tier-panel { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem 1.5rem 1.5rem; }
+.tier-intro { font-size: 0.75rem; color: var(--text-light); margin-bottom: 0.875rem; line-height: 1.5; }
+.tier-intro strong { color: var(--text); font-weight: 500; }
+.tier-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; margin-bottom: 0.875rem; }
+.tier-btn { border: 1.5px solid var(--border); background: var(--cream); border-radius: var(--radius); padding: 10px 6px; text-align: center; cursor: pointer; transition: all 0.15s; font-family: 'Inter', sans-serif; }
+.tier-btn:hover, .tier-btn.active { border-color: var(--gold); background: var(--gold-muted); }
+.tier-amount { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--slate); display: block; }
+.tier-label { font-size: 0.63rem; color: var(--text-light); margin-top: 2px; display: block; }
+.custom-wrap { position: relative; margin-bottom: 0.875rem; }
+.custom-wrap .sym { position: absolute; left: 13px; top: 50%; transform: translateY(-50%); color: var(--text-mid); font-size: 0.9rem; pointer-events: none; }
+.custom-input { width: 100%; border: 1.5px solid var(--border); border-radius: var(--radius); padding: 11px 13px 11px 26px; font-family: 'Inter', sans-serif; font-size: 0.9rem; background: var(--cream); color: var(--text); outline: none; transition: border-color 0.15s; }
+.custom-input:focus { border-color: var(--gold); }
+.donate-btn { width: 100%; background: var(--slate); color: #fff; border: none; border-radius: var(--radius); padding: 14px; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 500; cursor: pointer; letter-spacing: 0.03em; transition: background 0.15s, transform 0.1s; }
+.donate-btn:hover { background: var(--slate-mid); }
+.donate-btn:active { transform: scale(0.99); }
+
+.story-strip { max-width: 1100px; margin: 0 auto; padding: 6rem 3rem; }
+.strip-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; align-items: center; }
+.strip-img { border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 3/4; position: relative; }
+.strip-img::before { content: ''; position: absolute; inset: -12px -12px 12px 12px; border: 1.5px solid var(--gold-muted); border-radius: var(--radius-lg); z-index: 0; }
+.strip-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; position: relative; z-index: 1; }
+.label { font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; display: block; }
+.section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 2.8vw, 2.5rem); line-height: 1.2; color: var(--slate); margin-bottom: 1.5rem; }
+.body-text { font-size: 0.95rem; color: var(--text-mid); line-height: 1.85; margin-bottom: 1.1rem; }
+.body-text strong { color: var(--text); font-weight: 500; }
+.text-link { display: inline-flex; align-items: center; gap: 6px; color: var(--gold); font-size: 0.875rem; font-weight: 500; text-decoration: none; margin-top: 1rem; transition: gap 0.2s; }
+.text-link:hover { gap: 10px; }
+
+.teaching-strip { background: var(--warm-white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 5rem 0; }
+.teaching-inner { max-width: 1100px; margin: 0 auto; padding: 0 3rem; }
+.teaching-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 2.5rem; }
+.t-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; }
+.t-card-icon { width: 38px; height: 38px; background: var(--gold-muted); border-radius: 9px; display: flex; align-items: center; justify-content: center; margin-bottom: 0.875rem; }
+.t-card-icon svg { width: 17px; height: 17px; stroke: var(--gold); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.t-card-title { font-size: 0.875rem; font-weight: 500; color: var(--slate); margin-bottom: 0.4rem; line-height: 1.4; }
+.t-card-desc { font-size: 0.78rem; color: var(--text-light); line-height: 1.65; }
+
+.oxford-section { background: var(--slate); padding: 5rem 0; }
+.oxford-inner { max-width: 1100px; margin: 0 auto; padding: 0 3rem; }
+.oxford-section .label { color: rgba(201,168,76,0.45); }
+.oxford-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 2.8vw, 2.5rem); color: #fff; line-height: 1.2; margin: 0.75rem 0 1rem; }
+.oxford-intro { font-size: 0.9rem; font-weight: 300; color: rgba(255,255,255,0.5); max-width: 560px; line-height: 1.8; margin-bottom: 3rem; }
+.oxford-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border-radius: var(--radius-lg); overflow: hidden; }
+.oxford-stat { background: var(--slate); padding: 2rem 1.5rem; }
+.oxford-stat-num { font-family: 'Playfair Display', serif; font-size: 2.4rem; color: var(--gold); line-height: 1; margin-bottom: 0.5rem; }
+.oxford-stat-label { font-size: 0.8rem; font-weight: 500; color: rgba(255,255,255,0.75); margin-bottom: 0.3rem; }
+.oxford-stat-desc { font-size: 0.72rem; color: rgba(255,255,255,0.35); line-height: 1.55; }
+
+.impact-section { max-width: 1100px; margin: 0 auto; padding: 6rem 3rem; }
+.section-header { margin-bottom: 3rem; }
+.impact-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+.impact-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2rem; transition: transform 0.2s, box-shadow 0.2s; }
+.impact-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(28,31,38,0.06); }
+.impact-card.featured { background: var(--slate); border-color: transparent; }
+.impact-tag { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-light); margin-bottom: 0.6rem; }
+.impact-card.featured .impact-tag { color: var(--gold); }
+.impact-amount { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--slate); line-height: 1.1; margin-bottom: 0.75rem; }
+.impact-card.featured .impact-amount { color: #fff; }
+.impact-desc { font-size: 0.85rem; color: var(--text-mid); line-height: 1.75; }
+.impact-card.featured .impact-desc { color: rgba(255,255,255,0.6); }
+
+.journey-callout { background: var(--gold-muted); border-top: 1px solid rgba(201,168,76,0.2); border-bottom: 1px solid rgba(201,168,76,0.2); padding: 3.5rem 0; }
+.journey-inner { max-width: 1100px; margin: 0 auto; padding: 0 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+.journey-text .label { color: rgba(28,31,38,0.45); }
+.journey-text .section-title { font-size: clamp(1.6rem, 2.5vw, 2.2rem); margin-bottom: 1rem; }
+.journey-text p { font-size: 0.9rem; color: var(--text-mid); line-height: 1.8; }
+.journey-breakdown { display: flex; flex-direction: column; gap: 0.5rem; }
+.journey-row { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 1rem; background: rgba(255,255,255,0.5); border-radius: var(--radius); border: 1px solid rgba(201,168,76,0.15); }
+.journey-row.total { background: var(--slate); border-color: transparent; margin-top: 0.25rem; }
+.journey-row-name { font-size: 0.82rem; color: var(--text-mid); }
+.journey-row.total .journey-row-name { color: rgba(255,255,255,0.7); }
+.journey-row-amt { font-family: 'Playfair Display', serif; font-size: 0.95rem; color: var(--slate); }
+.journey-row.total .journey-row-amt { color: var(--gold-light); font-size: 1.1rem; }
+.journey-note { font-size: 0.72rem; color: var(--text-light); margin-top: 0.75rem; line-height: 1.5; }
+
+.footer-cta { background: var(--slate); padding: 5rem 3rem; text-align: center; }
+.footer-cta .label { color: rgba(201,168,76,0.5); margin-bottom: 0.75rem; }
+.footer-cta h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3vw, 2.8rem); color: #fff; margin-bottom: 1rem; line-height: 1.2; }
+.footer-cta p { color: rgba(255,255,255,0.5); max-width: 420px; margin: 0 auto 2.5rem; font-size: 0.925rem; }
+.btn-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.btn-gold { display: inline-block; background: var(--gold); color: var(--slate); font-size: 0.875rem; font-weight: 500; padding: 13px 30px; border-radius: 100px; text-decoration: none; transition: background 0.15s, transform 0.15s; }
+.btn-gold:hover { background: var(--gold-light); transform: translateY(-1px); }
+.btn-outline { display: inline-block; font-size: 0.875rem; color: rgba(255,255,255,0.6); text-decoration: none; border: 1px solid rgba(255,255,255,0.18); padding: 12px 28px; border-radius: 100px; transition: border-color 0.15s, color 0.15s; }
+.btn-outline:hover { border-color: rgba(255,255,255,0.4); color: #fff; }
+
+.site-footer { padding: 1.75rem 3rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; color: var(--text-light); }
+.site-footer a { color: var(--gold); text-decoration: none; }
+
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(28,31,38,0.6); z-index: 300; align-items: center; justify-content: center; padding: 1rem; }
+.modal-overlay.open { display: flex; }
+.modal { background: var(--cream); border-radius: 20px; padding: 2.25rem; width: 100%; max-width: 440px; position: relative; animation: modalUp 0.25s ease; }
+@keyframes modalUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+.modal-close { position: absolute; top: 1.1rem; right: 1.1rem; background: none; border: none; cursor: pointer; color: var(--text-mid); font-size: 1.1rem; padding: 5px 7px; border-radius: 8px; transition: background 0.15s; }
+.modal-close:hover { background: var(--warm-white); }
+.modal-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--slate); margin-bottom: 0.3rem; }
+.modal-sub { font-size: 0.83rem; color: var(--text-mid); margin-bottom: 1.5rem; }
+.form-input { width: 100%; border: 1.5px solid var(--border); border-radius: var(--radius); padding: 11px 14px; font-family: 'Inter', sans-serif; font-size: 0.875rem; background: #fff; color: var(--text); outline: none; margin-bottom: 0.75rem; transition: border-color 0.15s; }
+.form-input:focus { border-color: var(--gold); }
+.gofundme-note { background: var(--gold-muted); border-radius: var(--radius); padding: 0.875rem 1rem; font-size: 0.8rem; color: #7a6030; line-height: 1.6; margin-top: 0.75rem; text-align: center; }
+
+.fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 860px) {
+  nav { padding: 0 1.5rem; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+  .hero { grid-template-columns: 1fr; padding-top: 66px; }
+  .hero-left { padding: 3rem 1.75rem; min-height: 55vh; }
+  .hero-right { padding: 2rem 1.75rem; }
+  .strip-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .strip-img { aspect-ratio: 4/3; }
+  .strip-img::before { display: none; }
+  .teaching-cards { grid-template-columns: 1fr; }
+  .teaching-inner { padding: 0 1.75rem; }
+  .oxford-stats { grid-template-columns: repeat(2, 1fr); }
+  .oxford-inner { padding: 0 1.75rem; }
+  .impact-grid { grid-template-columns: 1fr; }
+  .journey-inner { grid-template-columns: 1fr; gap: 2rem; padding: 0 1.75rem; }
+  .story-strip, .impact-section { padding: 4rem 1.75rem; }
+  .footer-cta { padding: 4rem 1.75rem; }
+  .site-footer { flex-direction: column; gap: 0.4rem; text-align: center; padding: 1.5rem; }
+}
+
+.mtab-row {
+  display: flex;
+  background: var(--warm-white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 4px;
+  gap: 4px;
+  margin-bottom: 1rem;
+}
+.mtab {
+  flex: 1;
+  background: none;
+  border: none;
+  padding: 9px 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-light);
+  cursor: pointer;
+  border-radius: var(--radius);
+  transition: background 0.2s, color 0.2s;
+}
+.mtab.active {
+  background: #fff;
+  color: var(--slate);
+  box-shadow: 0 1px 6px rgba(28,31,38,0.1);
+}
+.mpanels-wrap {
+  background: var(--warm-white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+}
+.mbubble {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 2px 12px rgba(28,31,38,0.08);
+  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+  z-index: 0;
+  pointer-events: none;
+}
+.mpanel {
+  position: relative;
+  z-index: 1;
+  padding: 1.25rem;
+}
+.mtier-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 7px;
+  margin-bottom: 1.1rem;
+}
+.mtier-grid-2col {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 7px;
+  margin-bottom: 1.1rem;
+}
+.mtier {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--border);
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 10px 6px;
+  text-align: center;
+  text-decoration: none;
+  transition: border-color 0.15s, background 0.15s;
+  min-height: 56px;
+}
+.mtier:hover, .mtier.mtier-active {
+  border-color: var(--gold);
+  background: var(--gold-muted);
+}
+.mtier-amt {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  color: var(--slate);
+  display: block;
+  line-height: 1.2;
+}
+.mtier-lbl {
+  font-size: 0.63rem;
+  color: var(--text-light);
+  margin-top: 3px;
+  display: block;
+  line-height: 1.3;
+}
+.mfootnote {
+  font-size: 0.7rem;
+  color: var(--text-light);
+  text-align: center;
+  line-height: 1.5;
+  margin-top: 0.5rem;
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Natalie Sorensen</a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link active">Home</a>
+    <a href="about.html" class="nav-link">About Me</a>
+    <a href="updates.html" class="nav-link">Updates</a>
+    <a href="#" class="nav-cta" onclick="openModal1(event)">Donate</a>
+  </div>
+  <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html">Home</a>
+  <a href="about.html">About Me</a>
+  <a href="updates.html">Updates</a>
+  <a href="#" onclick="openModal1(event)">Donate</a>
+</div>
+
+<section class="hero">
+  <div class="hero-left fade-in">
+    <p class="hero-eyebrow">Fundraising Campaign · 2026</p>
+    <h1 class="hero-title">
+      Funding the science<br>
+      that <em>changes</em><br>
+      what cancer means.
+    </h1>
+    <p class="hero-sub">
+      I'm Natalie, a cancer researcher heading to Oxford to study oncology. Getting there takes more than acceptance. Help me fund the journey.
+    </p>
+    <a href="#" class="hero-cta" onclick="openModal1(event)">
+      Support my research
+      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+
+  <div class="hero-right fade-in" style="transition-delay:0.1s">
+    <div class="carousel-wrap">
+      <div class="carousel-track" id="carousel-track">
+        <div class="carousel-slide"><img src="images/photo-profile-pic.jpeg" style="object-position: center 30%; alt="Natalie Sorensen"><div class="carousel-caption">Always curious, always moving forward</div></div>
+        <div class="carousel-slide"><img src="images/photo-lab.jpeg" alt="Natalie in the UCSF research lab"><div class="carousel-caption">In the lab at UCSF, Mission Bay</div></div>
+        <div class="carousel-slide"><img src="images/photo-grad.jpeg" style="object-position: center 20%; alt="Natalie at graduation"><div class="carousel-caption">Graduating with a bachelor's from CPP</div></div>
+        <div class="carousel-slide"><img src="images/photo-lab-team.jpeg" alt="Natalie with her UCSF lab team"><div class="carousel-caption">The UCSF team, the community behind the science</div></div>
+        <div class="carousel-slide"><img src="images/photo-ihc.jpg" alt=""><div class="carousel-caption">Taking images of cancer samples</div></div>
+        <div class="carousel-slide"><img src="images/photo-if.jpeg" alt=""><div class="carousel-caption">Immunofluorescence imaging of cancer cells</div></div>
+      </div>
+      <div class="carousel-controls">
+        <button class="carousel-btn" onclick="moveCarousel(-1)" aria-label="Previous"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <button class="carousel-btn" onclick="moveCarousel(1)" aria-label="Next"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+      </div>
+    </div>
+    <div class="carousel-dots" id="carousel-dots"></div>
+
+    <div class="goals-panel">
+      <div class="goals-header">
+        <p class="goals-header-title">Fundraising goals</p>
+        <div class="total-journey">
+          <div class="total-journey-num">~$200,000</div>
+          <div class="total-journey-label">Full 3-year journey</div>
+        </div>
+      </div>
+      <div class="goal-bar">
+        <div class="goal-bar-top">
+          <p class="goal-bar-name">Moving Fund <span>flights, shipping, setup</span></p>
+          <div><span class="goal-bar-raised">$0</span><span class="goal-bar-of"> / $5,000</span></div>
+        </div>
+        <div class="progress-track"><div class="progress-fill progress-fill-move" id="move-fill"></div></div>
+        <div class="goal-bar-meta"><span><strong>0%</strong> funded</span><span>One-time, urgent</span></div>
+      </div>
+      <div class="goal-bar-divider"></div>
+      <div class="goal-bar">
+        <div class="goal-bar-top">
+          <p class="goal-bar-name">Year 1 at Oxford <span>tuition and research</span></p>
+          <div><span class="goal-bar-raised">$0</span><span class="goal-bar-of"> / $65,000</span></div>
+        </div>
+        <div class="progress-track"><div class="progress-fill" id="oxford-fill"></div></div>
+        <div class="goal-bar-meta"><span><strong>0%</strong> funded</span><span>£34,700 tuition + conferences</span></div>
+      </div>
+      <p class="goals-note">Years 2 and 3 will each require approximately $65,000 for tuition and research. Future campaigns will follow once Year 1 is funded. Any surplus from this campaign goes directly toward Year 2.</p>
+    </div>
+
+    <div class="tier-panel">
+      <p class="tier-intro">Every <strong>$178</strong> funds one full day of Oxford cancer research, including tuition and lab time.</p>
+
+      <!-- Tab switcher -->
+      <div class="mtab-row" style="margin-bottom:0.875rem">
+        <button class="mtab active" id="idx-tab-once" onclick="idxSwitchTab('once')">Give once</button>
+        <button class="mtab" id="idx-tab-monthly" onclick="idxSwitchTab('monthly')">Give monthly</button>
+      </div>
+
+      <!-- ONE-TIME CARDS -->
+      <div id="idx-panel-once">
+        <div class="tier-grid" style="margin-bottom:0.5rem">
+          <button class="tier-btn" onclick="idxSelectTier(45,'once',this)"><span class="tier-amount">$45</span><span class="tier-label">1/4 day</span></button>
+          <button class="tier-btn" onclick="idxSelectTier(89,'once',this)"><span class="tier-amount">$89</span><span class="tier-label">1/2 day</span></button>
+          <button class="tier-btn" onclick="idxSelectTier(178,'once',this)"><span class="tier-amount">$178</span><span class="tier-label">1 full day</span></button>
+          <button class="tier-btn" onclick="idxSelectTier(445,'once',this)"><span class="tier-amount">$445</span><span class="tier-label">2.5 days</span></button>
+          <button class="tier-btn" onclick="idxSelectTier(890,'once',this)"><span class="tier-amount">$890</span><span class="tier-label">1 week</span></button>
+          <button class="tier-btn" onclick="idxSelectTier(1780,'once',this)"><span class="tier-amount">$1,780</span><span class="tier-label">10 days</span></button>
+        </div>
+        <!-- Custom amount: clicking reveals input -->
+        <button class="tier-btn tier-btn-custom" id="custom-once-btn" style="width:100%;margin-bottom:0.5rem;padding:10px" onclick="window.open('https://donate.stripe.com/dRm6oI5M18YUc0nfpjcbC09','_blank')">
+          <span class="tier-amount" style="font-size:1rem">Choose my own amount</span>
+          <span class="tier-label">Click to enter</span>
+        </button>
+        <div id="custom-once-input" style="display:none;margin-bottom:0.5rem;visibility:hidden;height:0;overflow:hidden">
+          <div class="custom-wrap" style="margin-bottom:0.3rem">
+            <span class="sym">$</span>
+            <input type="number" class="custom-input" id="custom-once-val" placeholder="Enter amount" min="1" oninput="updateCustomCalc('once')">
+          </div>
+          <p id="custom-once-result" style="font-size:0.78rem;color:var(--text-mid);line-height:1.5;min-height:1.2em;text-align:center"></p>
+        </div>
+      </div>
+
+      <!-- MONTHLY CARDS -->
+      <div id="idx-panel-monthly" style="display:none">
+        <p style="font-size:0.72rem;color:var(--text-light);margin-bottom:0.5rem;line-height:1.5">Cancel anytime. Every $20/month funds a full day of research per year.</p>
+        <div class="tier-grid" style="grid-template-columns:repeat(2,1fr);margin-bottom:0.5rem">
+          <button class="tier-btn" onclick="idxSelectTier(10,'monthly',this)"><span class="tier-amount">$10</span><span class="tier-label">funds 1/2 day per year</span></button>
+          <button class="tier-btn" onclick="idxSelectTier(20,'monthly',this)"><span class="tier-amount">$20</span><span class="tier-label">funds 1 day per year</span></button>
+          <button class="tier-btn" onclick="idxSelectTier(50,'monthly',this)"><span class="tier-amount">$50</span><span class="tier-label">funds 3 days per year</span></button>
+          <button class="tier-btn" onclick="idxSelectTier(100,'monthly',this)"><span class="tier-amount">$100</span><span class="tier-label">funds 6.5 days per year</span></button>
+        </div>
+        <!-- Custom monthly: clicking reveals input -->
+        <button class="tier-btn tier-btn-custom" id="custom-monthly-btn" style="width:100%;margin-bottom:0.5rem;padding:10px" onclick="window.open('https://donate.stripe.com/9B6bJ25M1b72c0n90VcbC00','_blank')">
+          <span class="tier-amount" style="font-size:1rem">Choose my own monthly amount</span>
+          <span class="tier-label">Click to enter</span>
+        </button>
+        <div id="custom-monthly-input" style="display:none;margin-bottom:0.5rem;visibility:hidden;height:0;overflow:hidden">
+          <div class="custom-wrap" style="margin-bottom:0.3rem">
+            <span class="sym">$</span>
+            <input type="number" class="custom-input" id="custom-monthly-val" placeholder="Enter monthly amount" min="1" oninput="updateCustomCalc('monthly')">
+          </div>
+          <p id="custom-monthly-result" style="font-size:0.78rem;color:var(--text-mid);line-height:1.5;min-height:1.2em;text-align:center"></p>
+        </div>
+      </div>
+
+      <button class="donate-btn" id="idx-donate-btn" onclick="idxDonate()">Donate now</button>
+    </div>
+  </div>
+</section>
+<section class="story-strip">
+  <div class="strip-grid">
+    <div class="strip-img fade-in"><img src="images/photo-profile-pic.jpeg" alt="Natalie Sorensen"></div>
+    <div class="fade-in" style="transition-delay:0.15s">
+      <span class="label">My story</span>
+      <h2 class="section-title">Curiosity first. Then cancer made it personal.</h2>
+      <p class="body-text">For as long as I can remember I was drawn to how living things work, dissecting bugs in the backyard, watching surgical procedures online, fascinated by what others found uncomfortable. Science was never an obligation. It was just how I saw the world.</p>
+      <p class="body-text">When my mother was diagnosed with cancer, that curiosity found its direction. <strong>Cancer biology was not a field I chose. It chose me.</strong> I finished my bachelor's in three years while working multiple jobs, earned my master's conducting research at UCSF, and have now been accepted to Oxford's DPhil program in oncology.</p>
+      <p class="body-text">Alongside my research, I've taught over 100 students across subjects from intro biology to human anatomy, founded a student-run anatomy club, and privately tutored biology and chemistry. I believe science is only powerful if it reaches people, and I plan to spend my career making sure it does.</p>
+      <a href="about.html" class="text-link">Read my full story <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<section class="teaching-strip">
+  <div class="teaching-inner">
+    <div class="fade-in">
+      <span class="label">Teaching and mentorship</span>
+      <h2 class="section-title">Science is only powerful if it's passed on.</h2>
+    </div>
+    <div class="teaching-cards">
+      <div class="t-card fade-in" style="transition-delay:0.1s">
+        <div class="t-card-icon"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+        <p class="t-card-title">Teaching 100+ students across three subjects</p>
+        <p class="t-card-desc">From the scientific method and intro biology to human anatomy with cadaver labs at SFSU. I also privately tutored biology and chemistry. I teach because I know what it feels like to navigate science without a guide.</p>
+      </div>
+      <div class="t-card fade-in" style="transition-delay:0.2s">
+        <div class="t-card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M12 14c-6 0-8 2.5-8 4v1h16v-1c0-1.5-2-4-8-4z"/></svg></div>
+        <p class="t-card-title">Founder and President, SOMA Club</p>
+        <p class="t-card-desc">Founded the Systems-Oriented Medical Anatomy Club at SFSU to connect anatomy to its clinical meaning through workshops on real surgical and diagnostic applications.</p>
+      </div>
+      <div class="t-card fade-in" style="transition-delay:0.3s">
+        <div class="t-card-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <p class="t-card-title">STEM outreach and peer mentorship</p>
+        <p class="t-card-desc">Peer mentor for underrepresented students in STEM. Coordinator of events serving up to 200 participants through SEES outreach. Volunteered with a nonprofit supporting individuals leaving high-control groups.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="oxford-section">
+  <div class="oxford-inner">
+    <div class="fade-in">
+      <span class="label">Why Oxford oncology</span>
+      <h2 class="oxford-title">The opportunity of a lifetime,<br>backed by the numbers.</h2>
+      <p class="oxford-intro">Oxford's oncology DPhil program is one of the most competitive cancer research environments in the world. Colorectal cancer is one of the most prevalent and fastest-rising cancers globally, and Oxford is at the forefront of understanding it at the molecular level.</p>
+    </div>
+    <div class="oxford-stats fade-in" style="transition-delay:0.1s">
+      <div class="oxford-stat"><div class="oxford-stat-num">1.9M</div><div class="oxford-stat-label">New colorectal cancer cases yearly</div><div class="oxford-stat-desc">The 3rd most common cancer globally, with rising rates in adults under 50.</div></div>
+      <div class="oxford-stat"><div class="oxford-stat-num">900K</div><div class="oxford-stat-label">Deaths annually worldwide</div><div class="oxford-stat-desc">The 2nd leading cause of cancer death globally. Outcomes depend heavily on stage at diagnosis.</div></div>
+      <div class="oxford-stat"><div class="oxford-stat-num">Top 3</div><div class="oxford-stat-label">Oxford ranked globally for cancer research</div><div class="oxford-stat-desc">Consistently ranked among the world's top institutions for oncology research output and clinical translation.</div></div>
+      <div class="oxford-stat"><div class="oxford-stat-num">3 yrs</div><div class="oxford-stat-label">Intensive doctoral training</div><div class="oxford-stat-desc">A focused DPhil program built around independent research, international collaboration, and direct patient impact.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="impact-section">
+  <div class="section-header fade-in">
+    <span class="label">Where your money goes</span>
+    <h2 class="section-title">You're not paying my bills.<br>You're funding the research.</h2>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-card fade-in" style="transition-delay:0.1s"><p class="impact-tag">Fund a day of science</p><p class="impact-amount">$178 / day</p><p class="impact-desc">At Oxford, every day of research costs about $178 all-in: tuition amortized daily, living costs, and the overhead of actually being there. Your donation funds time, not just supplies.</p></div>
+    <div class="impact-card featured fade-in" style="transition-delay:0.2s"><p class="impact-tag">Fund a week of science</p><p class="impact-amount">$890</p><p class="impact-desc">A full research week at Oxford: five days of experiments, data analysis, and collaboration in one of the world's leading oncology environments. This is where the work happens.</p></div>
+    <div class="impact-card fade-in" style="transition-delay:0.3s"><p class="impact-tag">Fund access to science</p><p class="impact-amount">~$1,500 / trip</p><p class="impact-desc">Scientific conferences are where findings get shared, challenged, and built upon. Each trip runs about $1,500. Without funding, researchers simply don't go.</p></div>
+    <div class="impact-card fade-in" style="transition-delay:0.4s"><p class="impact-tag">Keep a scientist in the field</p><p class="impact-amount">Any amount</p><p class="impact-desc">Getting to Oxford costs $5,000 in moving expenses alone. That's before a single experiment. Your contribution closes the gap between acceptance and arrival.</p></div>
+  </div>
+</section>
+
+<section class="journey-callout">
+  <div class="journey-inner">
+    <div class="journey-text fade-in">
+      <span class="label">The full picture</span>
+      <h2 class="section-title">What training a cancer researcher actually costs.</h2>
+      <p>Three years at Oxford, including tuition, living, research costs, and getting there, represents a real financial gap that institutional support alone won't close.</p>
+    </div>
+    <div class="fade-in" style="transition-delay:0.15s">
+      <div class="journey-breakdown">
+        <div class="journey-row"><span class="journey-row-name">Moving to Oxford</span><span class="journey-row-amt">$5,000</span></div>
+        <div class="journey-row"><span class="journey-row-name">Year 1: tuition, living, research</span><span class="journey-row-amt">$65,000</span></div>
+        <div class="journey-row"><span class="journey-row-name">Year 2: ongoing</span><span class="journey-row-amt">$65,000</span></div>
+        <div class="journey-row"><span class="journey-row-name">Year 3: final year</span><span class="journey-row-amt">$65,000</span></div>
+        <div class="journey-row total"><span class="journey-row-name">Total cost of the DPhil</span><span class="journey-row-amt">~$200,000</span></div>
+      </div>
+      <p class="journey-note">This campaign funds the Moving Fund ($5,000) and Year 1 ($65,000). Years 2 and 3 will have their own campaigns. Any surplus rolls into Year 2.</p>
+    </div>
+  </div>
+</section>
+
+<div class="footer-cta">
+  <div class="fade-in">
+    <span class="label">Join the effort</span>
+    <h2>Be part of what Oxford makes possible.</h2>
+    <p>Every dollar is a day of research. Every day of research is a step toward better outcomes for cancer patients.</p>
+    <div class="btn-group"><a href="#" class="btn-gold" onclick="openModal1(event)">Donate now</a><a href="about.html" class="btn-outline">Read my story</a></div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <span>2026 Natalie Sorensen, Valencia, CA</span>
+  <span>Questions? <a href="/cdn-cgi/l/email-protection#a8ceddc6ccc6c9dcc9c4c1cde8dbc7dacdc6dbc686cbc7c5"><span class="__cf_email__" data-cfemail="c2a4b7aca6aca3b6a3aeaba782b1adb0a7acb1aceca1adaf">[email&#160;protected]</span></a></span>
+</footer>
+
+
+<div class="modal-overlay" id="modal1-overlay" onclick="closeModal1Outside(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal1()">&#x2715;</button>
+    <h3 class="modal-title">Make a donation</h3>
+    <p class="modal-sub">Your contribution directly funds Natalie's research at Oxford.</p>
+    <div class="mtab-row">
+      <button class="mtab active" id="m1-tab-once" onclick="m1SwitchTab('once')">Give once</button>
+      <button class="mtab" id="m1-tab-monthly" onclick="m1SwitchTab('monthly')">Give monthly</button>
+    </div>
+    <div class="mpanels-wrap">
+      <div class="mbubble" id="m1-bubble"></div>
+      <!-- ONE-TIME -->
+      <div class="mpanel" id="m1-panel-once">
+        <div class="mtier-grid" style="margin-bottom:0.6rem">
+          <button class="mtier" onclick="m1Select(45,'once',this)"><span class="mtier-amt">$45</span><span class="mtier-lbl">1/4 day</span></button>
+          <button class="mtier mtier-active" id="m1-default" onclick="m1Select(89,'once',this)"><span class="mtier-amt">$89</span><span class="mtier-lbl">1/2 day</span></button>
+          <button class="mtier" onclick="m1Select(178,'once',this)"><span class="mtier-amt">$178</span><span class="mtier-lbl">1 full day</span></button>
+          <button class="mtier" onclick="m1Select(445,'once',this)"><span class="mtier-amt">$445</span><span class="mtier-lbl">2.5 days</span></button>
+          <button class="mtier" onclick="m1Select(890,'once',this)"><span class="mtier-amt">$890</span><span class="mtier-lbl">1 week</span></button>
+          <button class="mtier" onclick="m1Select(1780,'once',this)"><span class="mtier-amt">$1,780</span><span class="mtier-lbl">10 days</span></button>
+        </div>
+        <button class="mtier" id="m1-custom-once-btn" style="width:100%;margin-bottom:0.5rem;flex-direction:row;gap:0.5rem;padding:10px 12px;justify-content:center" onclick="m1ShowCustom('once')">
+          <span class="mtier-amt" style="font-size:0.95rem">Choose my own amount</span>
+        </button>
+        <div id="m1-custom-once-wrap" style="display:none;margin-bottom:0.5rem;visibility:hidden;height:0;overflow:hidden">
+          <div class="custom-wrap" style="margin-bottom:0.3rem">
+            <span class="sym">$</span>
+            <input type="number" class="custom-input" id="m1-custom-once-val" placeholder="Enter amount" min="1" oninput="m1UpdateCalc('once')">
+          </div>
+          <p id="m1-custom-once-result" style="font-size:0.75rem;color:var(--text-mid);line-height:1.5;min-height:1.1em;text-align:center"></p>
+        </div>
+        <button class="donate-btn" onclick="m1Donate()">Donate now</button>
+        <p class="mfootnote">Opens secure Stripe checkout.</p>
+      </div>
+      <!-- MONTHLY -->
+      <div class="mpanel" id="m1-panel-monthly" style="display:none">
+        <p style="font-size:0.75rem;color:var(--text-mid);margin-bottom:0.6rem;line-height:1.5">Cancel anytime. Every $20/month funds a full day of research per year.</p>
+        <div class="mtier-grid-2col" style="margin-bottom:0.6rem">
+          <button class="mtier" onclick="m1Select(10,'monthly',this)"><span class="mtier-amt">$10</span><span class="mtier-lbl">funds 1/2 day per year</span></button>
+          <button class="mtier mtier-active" onclick="m1Select(20,'monthly',this)"><span class="mtier-amt">$20</span><span class="mtier-lbl">funds 1 day per year</span></button>
+          <button class="mtier" onclick="m1Select(50,'monthly',this)"><span class="mtier-amt">$50</span><span class="mtier-lbl">funds 3 days per year</span></button>
+          <button class="mtier" onclick="m1Select(100,'monthly',this)"><span class="mtier-amt">$100</span><span class="mtier-lbl">funds 6.5 days per year</span></button>
+        </div>
+        <button class="mtier" id="m1-custom-monthly-btn" style="width:100%;margin-bottom:0.5rem;flex-direction:row;gap:0.5rem;padding:10px 12px;justify-content:center" onclick="m1ShowCustom('monthly')">
+          <span class="mtier-amt" style="font-size:0.95rem">Choose my own monthly amount</span>
+        </button>
+        <div id="m1-custom-monthly-wrap" style="display:none;margin-bottom:0.5rem;visibility:hidden;height:0;overflow:hidden">
+          <div class="custom-wrap" style="margin-bottom:0.3rem">
+            <span class="sym">$</span>
+            <input type="number" class="custom-input" id="m1-custom-monthly-val" placeholder="Enter monthly amount" min="1" oninput="m1UpdateCalc('monthly')">
+          </div>
+          <p id="m1-custom-monthly-result" style="font-size:0.75rem;color:var(--text-mid);line-height:1.5;min-height:1.1em;text-align:center"></p>
+        </div>
+        <button class="donate-btn" onclick="m1Donate()">Donate now</button>
+        <p class="mfootnote">Billed monthly via Stripe. Cancel anytime.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL 2: Frequency chooser (for custom calculator amount) -->
+<div class="modal-overlay" id="modal2-overlay" onclick="closeModal2Outside(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal2()">&#x2715;</button>
+    <h3 class="modal-title">How would you like to give?</h3>
+    <p class="modal-sub" id="m2-sub">Choose one-time or monthly to continue.</p>
+    <div class="mtab-row">
+      <button class="mtab active" id="m2-tab-once" onclick="m2SwitchTab('once')">Give once</button>
+      <button class="mtab" id="m2-tab-monthly" onclick="m2SwitchTab('monthly')">Give monthly</button>
+    </div>
+    <div class="mpanels-wrap">
+      <div class="mbubble" id="m2-bubble"></div>
+      <div class="mpanel" id="m2-panel-once">
+        <p style="font-size:0.85rem;color:var(--text-mid);margin-bottom:1.25rem;line-height:1.6" id="m2-once-desc">A single one-time donation.</p>
+        <button class="donate-btn" style="margin-bottom:0.75rem" onclick="m2Donate('once')">Continue to one-time checkout</button>
+        <button class="post-toggle" style="display:flex;margin:0 auto" onclick="closeModal2();openModal1()">
+          <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          Back to donation options
+        </button>
+      </div>
+      <div class="mpanel" id="m2-panel-monthly" style="display:none">
+        <p style="font-size:0.85rem;color:var(--text-mid);margin-bottom:1.25rem;line-height:1.6" id="m2-monthly-desc">Billed monthly. Cancel anytime.</p>
+        <button class="donate-btn" style="margin-bottom:0.75rem" onclick="m2Donate('monthly')">Continue to monthly checkout</button>
+        <button class="post-toggle" style="display:flex;margin:0 auto" onclick="closeModal2();openModal1()">
+          <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          Back to donation options
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+const obs=new IntersectionObserver(en=>{en.forEach(e=>{if(e.isIntersecting)e.target.classList.add("visible")})},{threshold:0.08,rootMargin:"0px 0px -30px 0px"});
+document.querySelectorAll(".fade-in").forEach(el=>obs.observe(el));
+function toggleMenu(){document.getElementById("mobile-menu").classList.toggle("open")}
+document.addEventListener("click",e=>{const m=document.getElementById("mobile-menu");const b=document.querySelector(".nav-hamburger");if(m&&!m.contains(e.target)&&b&&!b.contains(e.target))m.classList.remove("open")});
+
+// Carousel
+let slide=0,total=6,autoTimer=null;
+const track=document.getElementById("carousel-track");
+const dotsEl=document.getElementById("carousel-dots");
+for(let i=0;i<total;i++){const d=document.createElement("div");d.className="dot"+(i===0?" active":"");d.onclick=()=>{goTo(i);resetTimer()};dotsEl.appendChild(d)}
+function goTo(n){slide=(n+total)%total;track.style.transform="translateX(-"+(slide*100)+"%)";document.querySelectorAll(".dot").forEach((d,i)=>d.classList.toggle("active",i===slide))}
+function moveCarousel(dir){goTo(slide+dir);resetTimer()}
+function resetTimer(){if(autoTimer)clearInterval(autoTimer);autoTimer=setInterval(()=>goTo(slide+1),30000)}
+autoTimer=setInterval(()=>goTo(slide+1),30000);
+
+// Stripe links
+const STRIPE_ONCE = {
+  45: "https://donate.stripe.com/eVq14o3DTa2Y7K790VcbC05",
+  89: "https://donate.stripe.com/bJecN66Q5cb6c0n0upcbC06",
+  178: "https://donate.stripe.com/9B65kEeixb723tR6SNcbC0c",
+  445: "https://donate.stripe.com/4gM00ka2h1wsd4rb93cbC0a",
+  890: "https://donate.stripe.com/dRm6oI3DTgrm7K72CxcbC07",
+  1780: "https://donate.stripe.com/cNi28s0rH6QMggDfpjcbC08",
+  custom: "https://donate.stripe.com/dRm6oI5M18YUc0nfpjcbC09"
+};
+const STRIPE_MONTHLY = {
+  10: "https://donate.stripe.com/4gM00k2zPa2Y4xV4KFcbC04",
+  20: "https://donate.stripe.com/4gM00kcapdfa2pNb93cbC03",
+  50: "https://donate.stripe.com/aFa5kEfmBdfad4ra4ZcbC02",
+  100: "https://donate.stripe.com/fZu6oI1vL0so5BZb93cbC01",
+  custom: "https://donate.stripe.com/9B6bJ25M1b72c0n90VcbC00"
+};
+
+// Index tier panel
+var idxMode = "once";
+var idxAmount = null;
+
+function idxSwitchTab(tab) {
+  idxMode = tab;
+  idxAmount = null;
+  document.getElementById("idx-panel-once").style.display = tab === "once" ? "block" : "none";
+  document.getElementById("idx-panel-monthly").style.display = tab === "monthly" ? "block" : "none";
+  document.getElementById("idx-tab-once").classList.toggle("active", tab === "once");
+  document.getElementById("idx-tab-monthly").classList.toggle("active", tab !== "once");
+  document.querySelectorAll("#idx-panel-once .tier-btn, #idx-panel-monthly .tier-btn").forEach(b => b.classList.remove("active"));
+}
+
+function idxSelectTier(amount, mode, btn) {
+  if (btn.classList.contains("active")) {
+    btn.classList.remove("active");
+    idxAmount = null;
+    idxMode = mode;
+    return;
+  }
+  idxMode = mode;
+  idxAmount = amount;
+  document.querySelectorAll("#idx-panel-once .tier-btn, #idx-panel-monthly .tier-btn").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+}
+
+async function idxDonate() {
+  const btn = document.getElementById("idx-donate-btn");
+
+  // Fixed tier selected — go straight to its Stripe Payment Link
+  if (idxAmount !== null && idxAmount !== "custom") {
+    const links = idxMode === "once" ? STRIPE_ONCE : STRIPE_MONTHLY;
+    const url = links[idxAmount];
+    if (url) { window.open(url, "_blank"); return; }
+  }
+
+  // Custom amount — read from the visible input field
+  const inputId = idxMode === "once" ? "custom-once-val" : "custom-monthly-val";
+  const customInput = document.getElementById(inputId);
+  const customVal = customInput ? parseFloat(customInput.value) : null;
+
+  // If no valid custom amount entered, open Modal 1
+  if (!customVal || customVal < 1) {
+    openModal1();
+    return;
+  }
+
+  // Call Netlify function to create a pre-filled Stripe Checkout Session
+  btn.textContent = "Loading...";
+  btn.disabled = true;
+
+  try {
+    const res = await fetch("/api/create-checkout", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ amount: customVal, mode: idxMode })
+    });
+
+    // Check we got JSON back before parsing
+    const contentType = res.headers.get("content-type") || "";
+    if (!contentType.includes("application/json")) {
+      const text = await res.text();
+      console.error("Non-JSON response:", text);
+      alert("Payment service unavailable. Please try again shortly or email natalie@sorensn.com");
+      return;
+    }
+
+    const data = await res.json();
+    if (data.url) {
+      window.location.href = data.url;
+    } else {
+      console.error("Stripe error:", data.error);
+      alert("Error: " + (data.error || "Something went wrong. Please email natalie@sorensn.com"));
+    }
+  } catch (err) {
+    console.error(err);
+    alert("Something went wrong. Please try again or email natalie@sorensn.com");
+  } finally {
+    btn.textContent = "Donate now";
+    btn.disabled = false;
+  }
+}
+
+// updateCalc removed — now handled by updateCustomCalc
+
+// Modal 1
+var m1Mode = "once";
+var m1Amount = 89;
+
+function openModal1(e) {
+  if (e && e.preventDefault) e.preventDefault();
+  m1Mode = "once"; m1Amount = 89;
+  document.getElementById("m1-panel-once").style.display = "block";
+  document.getElementById("m1-panel-monthly").style.display = "none";
+  document.getElementById("m1-tab-once").classList.add("active");
+  document.getElementById("m1-tab-monthly").classList.remove("active");
+  document.querySelectorAll("#modal1-overlay .mtier").forEach(b => b.classList.remove("mtier-active"));
+  var def = document.getElementById("m1-default");
+  if (def) def.classList.add("mtier-active");
+  document.getElementById("modal1-overlay").classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+function openModal(e) { openModal1(e); }
+
+function closeModal1() {
+  document.getElementById("modal1-overlay").classList.remove("open");
+  document.body.style.overflow = "";
+}
+function closeModal() { closeModal1(); }
+function closeModal1Outside(e) { if (e.target === document.getElementById("modal1-overlay")) closeModal1(); }
+
+function m1SwitchTab(tab) {
+  m1Mode = tab; m1Amount = tab === "once" ? 89 : 20;
+  document.getElementById("m1-panel-once").style.display = tab === "once" ? "block" : "none";
+  document.getElementById("m1-panel-monthly").style.display = tab === "monthly" ? "block" : "none";
+  document.getElementById("m1-tab-once").classList.toggle("active", tab === "once");
+  document.getElementById("m1-tab-monthly").classList.toggle("active", tab !== "once");
+  document.querySelectorAll("#modal1-overlay .mtier").forEach(b => b.classList.remove("mtier-active"));
+  if (tab === "once") { var def = document.getElementById("m1-default"); if (def) def.classList.add("mtier-active"); }
+  else { var btns = document.querySelectorAll("#m1-panel-monthly .mtier"); if (btns[1]) btns[1].classList.add("mtier-active"); }
+}
+
+function m1Select(amount, mode, btn) {
+  if (btn.classList.contains("mtier-active")) {
+    btn.classList.remove("mtier-active"); m1Amount = null; return;
+  }
+  m1Mode = mode; m1Amount = amount;
+  document.querySelectorAll("#modal1-overlay .mtier").forEach(b => b.classList.remove("mtier-active"));
+  btn.classList.add("mtier-active");
+}
+
+function m1ShowCustom(mode) {
+  var url = mode === "once" ? "https://donate.stripe.com/dRm6oI5M18YUc0nfpjcbC09" : "https://donate.stripe.com/9B6bJ25M1b72c0n90VcbC00";
+  window.open(url, "_blank");
+}
+
+function m1UpdateCalc(mode) {
+  const inputId = mode === "once" ? "m1-custom-once-val" : "m1-custom-monthly-val";
+  const resultId = mode === "once" ? "m1-custom-once-result" : "m1-custom-monthly-result";
+  const val = parseFloat(document.getElementById(inputId).value);
+  const res = document.getElementById(resultId);
+  if (!val || val < 1) { res.textContent = ""; return; }
+  m1Amount = "custom";
+  if (mode === "once") {
+    const days = val / 178;
+    if (days < 0.5) res.textContent = "Less than half a day of cancer research.";
+    else if (days < 1) res.textContent = "About " + Math.round(days * 24) + " hours of Oxford cancer research.";
+    else if (days < 2) res.textContent = "1 full day of Oxford cancer research.";
+    else res.textContent = days.toFixed(1) + " days of Oxford cancer research.";
+  } else {
+    res.textContent = ((val * 12) / 178).toFixed(1) + " days of research funded per year.";
+  }
+}
+
+function m1Donate() {
+  if (m1Amount !== null && m1Amount !== "custom") {
+    const links = m1Mode === "once" ? STRIPE_ONCE : STRIPE_MONTHLY;
+    const url = links[m1Amount];
+    if (url) { window.open(url, "_blank"); return; }
+  }
+  // Custom — go straight to Stripe custom amount page
+  var url = m1Mode === "once" ? "https://donate.stripe.com/dRm6oI5M18YUc0nfpjcbC09" : "https://donate.stripe.com/9B6bJ25M1b72c0n90VcbC00";
+  window.open(url, "_blank");
+}
+// Modal 2
+var m2Amount = null;
+var m2Mode = "once";
+
+function openModal2(amount) {
+  m2Amount = amount; m2Mode = "once";
+  var amtLabel = amount ? ("$" + amount) : "your chosen amount";
+  document.getElementById("m2-sub").textContent = amount
+    ? ("You would like to donate " + amtLabel + ". How would you like to give?")
+    : "Choose one-time or monthly to continue.";
+  document.getElementById("m2-once-desc").textContent = amount
+    ? (amtLabel + " as a one-time donation.")
+    : "A single one-time donation in your chosen amount.";
+  document.getElementById("m2-monthly-desc").textContent = amount
+    ? (amtLabel + " per month, billed monthly. Cancel anytime.")
+    : "A recurring monthly donation. Cancel anytime.";
+  document.getElementById("m2-panel-once").style.display = "block";
+  document.getElementById("m2-panel-monthly").style.display = "none";
+  document.getElementById("m2-tab-once").classList.add("active");
+  document.getElementById("m2-tab-monthly").classList.remove("active");
+  document.getElementById("modal2-overlay").classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+
+function closeModal2() {
+  document.getElementById("modal2-overlay").classList.remove("open");
+  document.body.style.overflow = "";
+}
+function closeModal2Outside(e) { if (e.target === document.getElementById("modal2-overlay")) closeModal2(); }
+
+
+function m2SwitchTab(tab) {
+  m2Mode = tab;
+  document.getElementById("m2-panel-once").style.display = tab === "once" ? "block" : "none";
+  document.getElementById("m2-panel-monthly").style.display = tab === "monthly" ? "block" : "none";
+  document.getElementById("m2-tab-once").classList.toggle("active", tab === "once");
+  document.getElementById("m2-tab-monthly").classList.toggle("active", tab !== "once");
+}
+
+function m2Donate(mode) {
+  var url = mode === "once" ? STRIPE_ONCE.custom : STRIPE_MONTHLY.custom;
+  window.open(url, "_blank");
+}
+
+// ── Custom amount input reveal ───────────────────────────────────────────────
+function showCustomInput(mode) {
+  var url = mode === "once" ? "https://donate.stripe.com/dRm6oI5M18YUc0nfpjcbC09" : "https://donate.stripe.com/9B6bJ25M1b72c0n90VcbC00";
+  window.open(url, "_blank");
+}
+
+function updateCustomCalc(mode) {
+  const inputId = mode === "once" ? "custom-once-val" : "custom-monthly-val";
+  const resultId = mode === "once" ? "custom-once-result" : "custom-monthly-result";
+  const val = parseFloat(document.getElementById(inputId).value);
+  const res = document.getElementById(resultId);
+  if (!val || val < 1) { res.textContent = ""; return; }
+
+  // Store this as the current custom amount
+  idxAmount = "custom";
+  idxMode = mode;
+
+  if (mode === "once") {
+    const days = val / 178;
+    if (days < 0.5) res.textContent = "Less than half a day of cancer research.";
+    else if (days < 1) res.textContent = "About " + Math.round(days * 24) + " hours of Oxford cancer research.";
+    else if (days < 2) res.textContent = "1 full day of Oxford cancer research.";
+    else res.textContent = days.toFixed(1) + " days of Oxford cancer research.";
+  } else {
+    const daysPerYear = (val * 12) / 178;
+    res.textContent = daysPerYear.toFixed(1) + " days of research funded per year.";
+  }
+}
+
+// ── idxDonate (async, calls Netlify for custom amounts) ─────────────────────
+async function idxDonate() {
+  const btn = document.getElementById("idx-donate-btn");
+
+  // Fixed tier selected
+  if (idxAmount !== null && idxAmount !== "custom") {
+    const links = idxMode === "once" ? STRIPE_ONCE : STRIPE_MONTHLY;
+    const url = links[idxAmount];
+    if (url) { window.open(url, "_blank"); return; }
+  }
+
+  // Get custom input value
+  const inputId = idxMode === "once" ? "custom-once-val" : "custom-monthly-val";
+  const customInput = document.getElementById(inputId);
+  const customVal = customInput ? parseFloat(customInput.value) : null;
+
+  if (!customVal || customVal < 1) {
+    openModal1();
+    return;
+  }
+
+  btn.textContent = "Loading...";
+  btn.disabled = true;
+
+  try {
+    const res = await fetch("/api/create-checkout", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ amount: customVal, mode: idxMode })
+    });
+
+    // Check we got JSON back before parsing
+    const contentType = res.headers.get("content-type") || "";
+    if (!contentType.includes("application/json")) {
+      const text = await res.text();
+      console.error("Non-JSON response:", text);
+      alert("Payment service unavailable. Please try again shortly or email natalie@sorensn.com");
+      return;
+    }
+
+    const data = await res.json();
+    if (data.url) {
+      window.location.href = data.url;
+    } else {
+      console.error("Stripe error:", data.error);
+      alert("Error: " + (data.error || "Something went wrong. Please email natalie@sorensn.com"));
+    }
+  } catch (err) {
+    console.error(err);
+    alert("Something went wrong. Please try again or email natalie@sorensn.com");
+  } finally {
+    btn.textContent = "Donate now";
+    btn.disabled = false;
+  }
+}
+
+</script>
+</body>
+</html>
