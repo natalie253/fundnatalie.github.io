@@ -401,52 +401,54 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; height: 66px; di
         <button class="mtab" id="idx-tab-monthly" onclick="idxSwitchTab('monthly')">Give monthly</button>
       </div>
 
-      <!-- ONE-TIME CARDS -->
-      <div id="idx-panel-once">
-        <div class="tier-grid" style="margin-bottom:0.5rem">
-          <button class="tier-btn" onclick="idxSelectTier(45,'once',this)"><span class="tier-amount">$45</span><span class="tier-label">1/4 day</span></button>
-          <button class="tier-btn" onclick="idxSelectTier(89,'once',this)"><span class="tier-amount">$89</span><span class="tier-label">1/2 day</span></button>
-          <button class="tier-btn" onclick="idxSelectTier(178,'once',this)"><span class="tier-amount">$178</span><span class="tier-label">1 full day</span></button>
-          <button class="tier-btn" onclick="idxSelectTier(445,'once',this)"><span class="tier-amount">$445</span><span class="tier-label">2.5 days</span></button>
-          <button class="tier-btn" onclick="idxSelectTier(890,'once',this)"><span class="tier-amount">$890</span><span class="tier-label">1 week</span></button>
-          <button class="tier-btn" onclick="idxSelectTier(1780,'once',this)"><span class="tier-amount">$1,780</span><span class="tier-label">10 days</span></button>
+      <!-- ONE-TIME -->
+      <div class="mpanel" id="m1-panel-once">
+        <div class="mtier-grid" style="margin-bottom:0.6rem">
+          <button class="mtier" onclick="m1Select(45,'once',this)"><span class="mtier-amt">$45</span><span class="mtier-lbl">1/4 day</span></button>
+          <button class="mtier mtier-active" id="m1-default" onclick="m1Select(89,'once',this)"><span class="mtier-amt">$89</span><span class="mtier-lbl">1/2 day</span></button>
+          <button class="mtier" onclick="m1Select(178,'once',this)"><span class="mtier-amt">$178</span><span class="mtier-lbl">1 full day</span></button>
+          <button class="mtier" onclick="m1Select(445,'once',this)"><span class="mtier-amt">$445</span><span class="mtier-lbl">2.5 days</span></button>
+          <button class="mtier" onclick="m1Select(890,'once',this)"><span class="mtier-amt">$890</span><span class="mtier-lbl">1 week</span></button>
+          <button class="mtier" onclick="m1Select(1780,'once',this)"><span class="mtier-amt">$1,780</span><span class="mtier-lbl">10 days</span></button>
         </div>
-        <!-- Custom amount: clicking reveals input -->
-        <button class="tier-btn tier-btn-custom" id="custom-once-btn" style="width:100%;margin-bottom:0.5rem;padding:10px" onclick="showCustomInput('once')">
-          <span class="tier-amount" style="font-size:1rem">Choose my own amount</span>
-          <span class="tier-label">Click to enter</span>
+        <button class="mtier" id="m1-custom-once-btn" style="width:100%;margin-bottom:0.5rem;flex-direction:row;gap:0.5rem;padding:10px 12px;justify-content:center" onclick="m1ShowCustom('once')">
+          <span class="mtier-amt" style="font-size:0.95rem">Choose my own amount</span>
         </button>
-        <div id="custom-once-input" style="display:none;margin-bottom:0.5rem">
+        <div id="m1-custom-once-wrap" style="display:none;margin-bottom:0.5rem;visibility:hidden;height:0;overflow:hidden">
           <div class="custom-wrap" style="margin-bottom:0.3rem">
             <span class="sym">$</span>
-            <input type="number" class="custom-input" id="custom-once-val" placeholder="Enter amount" min="1" oninput="updateCustomCalc('once')">
+            <input type="number" class="custom-input" id="m1-custom-once-val" placeholder="Enter amount" min="1" oninput="m1UpdateCalc('once')">
           </div>
-          <p id="custom-once-result" style="font-size:0.78rem;color:var(--text-mid);line-height:1.5;min-height:1.2em;text-align:center"></p>
+          <p id="m1-custom-once-result" style="font-size:0.75rem;color:var(--text-mid);line-height:1.5;min-height:1.1em;text-align:center"></p>
         </div>
+        <button class="donate-btn" onclick="m1Donate()">Donate now</button>
+        <p class="mfootnote">Opens secure Stripe checkout.</p>
       </div>
-
-      <!-- MONTHLY CARDS -->
-      <div id="idx-panel-monthly" style="display:none">
-        <p style="font-size:0.72rem;color:var(--text-light);margin-bottom:0.5rem;line-height:1.5">Cancel anytime. Every $20/month funds a full day of research per year.</p>
-        <div class="tier-grid" style="grid-template-columns:repeat(2,1fr);margin-bottom:0.5rem">
-          <button class="tier-btn" onclick="idxSelectTier(10,'monthly',this)"><span class="tier-amount">$10</span><span class="tier-label">funds 1/2 day per year</span></button>
-          <button class="tier-btn" onclick="idxSelectTier(20,'monthly',this)"><span class="tier-amount">$20</span><span class="tier-label">funds 1 day per year</span></button>
-          <button class="tier-btn" onclick="idxSelectTier(50,'monthly',this)"><span class="tier-amount">$50</span><span class="tier-label">funds 3 days per year</span></button>
-          <button class="tier-btn" onclick="idxSelectTier(100,'monthly',this)"><span class="tier-amount">$100</span><span class="tier-label">funds 6.5 days per year</span></button>
+      <!-- MONTHLY -->
+      <div class="mpanel" id="m1-panel-monthly" style="display:none">
+        <p style="font-size:0.75rem;color:var(--text-mid);margin-bottom:0.6rem;line-height:1.5">Cancel anytime. Every $20/month funds a full day of research per year.</p>
+        <div class="mtier-grid-2col" style="margin-bottom:0.6rem">
+          <button class="mtier" onclick="m1Select(10,'monthly',this)"><span class="mtier-amt">$10</span><span class="mtier-lbl">funds 1/2 day per year</span></button>
+          <button class="mtier mtier-active" onclick="m1Select(20,'monthly',this)"><span class="mtier-amt">$20</span><span class="mtier-lbl">funds 1 day per year</span></button>
+          <button class="mtier" onclick="m1Select(50,'monthly',this)"><span class="mtier-amt">$50</span><span class="mtier-lbl">funds 3 days per year</span></button>
+          <button class="mtier" onclick="m1Select(100,'monthly',this)"><span class="mtier-amt">$100</span><span class="mtier-lbl">funds 6.5 days per year</span></button>
         </div>
-        <!-- Custom monthly: clicking reveals input -->
-        <button class="tier-btn tier-btn-custom" id="custom-monthly-btn" style="width:100%;margin-bottom:0.5rem;padding:10px" onclick="showCustomInput('monthly')">
-          <span class="tier-amount" style="font-size:1rem">Choose my own monthly amount</span>
-          <span class="tier-label">Click to enter</span>
+        <button class="mtier" id="m1-custom-monthly-btn" style="width:100%;margin-bottom:0.5rem;flex-direction:row;gap:0.5rem;padding:10px 12px;justify-content:center" onclick="m1ShowCustom('monthly')">
+          <span class="mtier-amt" style="font-size:0.95rem">Choose my own monthly amount</span>
         </button>
-        <div id="custom-monthly-input" style="display:none;margin-bottom:0.5rem">
+        <div id="m1-custom-monthly-wrap" style="display:none;margin-bottom:0.5rem;visibility:hidden;height:0;overflow:hidden">
           <div class="custom-wrap" style="margin-bottom:0.3rem">
             <span class="sym">$</span>
-            <input type="number" class="custom-input" id="custom-monthly-val" placeholder="Enter monthly amount" min="1" oninput="updateCustomCalc('monthly')">
+            <input type="number" class="custom-input" id="m1-custom-monthly-val" placeholder="Enter monthly amount" min="1" oninput="m1UpdateCalc('monthly')">
           </div>
-          <p id="custom-monthly-result" style="font-size:0.78rem;color:var(--text-mid);line-height:1.5;min-height:1.2em;text-align:center"></p>
+          <p id="m1-custom-monthly-result" style="font-size:0.75rem;color:var(--text-mid);line-height:1.5;min-height:1.1em;text-align:center"></p>
         </div>
+        <button class="donate-btn" onclick="m1Donate()">Donate now</button>
+        <p class="mfootnote">Billed monthly via Stripe. Cancel anytime.</p>
       </div>
+    </div>
+  </div>
+</div>
 
       <button class="donate-btn" id="idx-donate-btn" onclick="idxDonate()">Donate now</button>
     </div>
@@ -580,7 +582,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; height: 66px; di
         <button class="mtier" id="m1-custom-once-btn" style="width:100%;margin-bottom:0.5rem;flex-direction:row;gap:0.5rem;padding:10px 12px;justify-content:center" onclick="m1ShowCustom('once')">
           <span class="mtier-amt" style="font-size:0.95rem">Choose my own amount</span>
         </button>
-        <div id="m1-custom-once-wrap" style="display:none;margin-bottom:0.5rem">
+        <div id="m1-custom-once-wrap" style="display:none;margin-bottom:0.5rem;visibility:hidden;height:0;overflow:hidden">
           <div class="custom-wrap" style="margin-bottom:0.3rem">
             <span class="sym">$</span>
             <input type="number" class="custom-input" id="m1-custom-once-val" placeholder="Enter amount" min="1" oninput="m1UpdateCalc('once')">
@@ -602,7 +604,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; height: 66px; di
         <button class="mtier" id="m1-custom-monthly-btn" style="width:100%;margin-bottom:0.5rem;flex-direction:row;gap:0.5rem;padding:10px 12px;justify-content:center" onclick="m1ShowCustom('monthly')">
           <span class="mtier-amt" style="font-size:0.95rem">Choose my own monthly amount</span>
         </button>
-        <div id="m1-custom-monthly-wrap" style="display:none;margin-bottom:0.5rem">
+        <div id="m1-custom-monthly-wrap" style="display:none;margin-bottom:0.5rem;visibility:hidden;height:0;overflow:hidden">
           <div class="custom-wrap" style="margin-bottom:0.3rem">
             <span class="sym">$</span>
             <input type="number" class="custom-input" id="m1-custom-monthly-val" placeholder="Enter monthly amount" min="1" oninput="m1UpdateCalc('monthly')">
