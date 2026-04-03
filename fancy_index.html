@@ -412,11 +412,11 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; height: 66px; di
           <button class="tier-btn" onclick="idxSelectTier(1780,'once',this)"><span class="tier-amount">$1,780</span><span class="tier-label">10 days</span></button>
         </div>
         <!-- Custom amount: clicking reveals input -->
-        <button class="tier-btn tier-btn-custom" id="custom-once-btn" style="width:100%;margin-bottom:0.5rem;padding:10px" onclick="showCustomInput('once')">
+        <button class="tier-btn tier-btn-custom" id="custom-once-btn" style="width:100%;margin-bottom:0.5rem;padding:10px" onclick="window.open('https://donate.stripe.com/dRm6oI5M18YUc0nfpjcbC09','_blank')">
           <span class="tier-amount" style="font-size:1rem">Choose my own amount</span>
           <span class="tier-label">Click to enter</span>
         </button>
-        <div id="custom-once-input" style="display:none;margin-bottom:0.5rem">
+        <div id="custom-once-input" style="display:none;margin-bottom:0.5rem;visibility:hidden;height:0;overflow:hidden">
           <div class="custom-wrap" style="margin-bottom:0.3rem">
             <span class="sym">$</span>
             <input type="number" class="custom-input" id="custom-once-val" placeholder="Enter amount" min="1" oninput="updateCustomCalc('once')">
@@ -435,11 +435,11 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; height: 66px; di
           <button class="tier-btn" onclick="idxSelectTier(100,'monthly',this)"><span class="tier-amount">$100</span><span class="tier-label">funds 6.5 days per year</span></button>
         </div>
         <!-- Custom monthly: clicking reveals input -->
-        <button class="tier-btn tier-btn-custom" id="custom-monthly-btn" style="width:100%;margin-bottom:0.5rem;padding:10px" onclick="showCustomInput('monthly')">
+        <button class="tier-btn tier-btn-custom" id="custom-monthly-btn" style="width:100%;margin-bottom:0.5rem;padding:10px" onclick="window.open('https://donate.stripe.com/9B6bJ25M1b72c0n90VcbC00','_blank')">
           <span class="tier-amount" style="font-size:1rem">Choose my own monthly amount</span>
           <span class="tier-label">Click to enter</span>
         </button>
-        <div id="custom-monthly-input" style="display:none;margin-bottom:0.5rem">
+        <div id="custom-monthly-input" style="display:none;margin-bottom:0.5rem;visibility:hidden;height:0;overflow:hidden">
           <div class="custom-wrap" style="margin-bottom:0.3rem">
             <span class="sym">$</span>
             <input type="number" class="custom-input" id="custom-monthly-val" placeholder="Enter monthly amount" min="1" oninput="updateCustomCalc('monthly')">
@@ -580,7 +580,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; height: 66px; di
         <button class="mtier" id="m1-custom-once-btn" style="width:100%;margin-bottom:0.5rem;flex-direction:row;gap:0.5rem;padding:10px 12px;justify-content:center" onclick="m1ShowCustom('once')">
           <span class="mtier-amt" style="font-size:0.95rem">Choose my own amount</span>
         </button>
-        <div id="m1-custom-once-wrap" style="display:none;margin-bottom:0.5rem">
+        <div id="m1-custom-once-wrap" style="display:none;margin-bottom:0.5rem;visibility:hidden;height:0;overflow:hidden">
           <div class="custom-wrap" style="margin-bottom:0.3rem">
             <span class="sym">$</span>
             <input type="number" class="custom-input" id="m1-custom-once-val" placeholder="Enter amount" min="1" oninput="m1UpdateCalc('once')">
@@ -602,7 +602,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; height: 66px; di
         <button class="mtier" id="m1-custom-monthly-btn" style="width:100%;margin-bottom:0.5rem;flex-direction:row;gap:0.5rem;padding:10px 12px;justify-content:center" onclick="m1ShowCustom('monthly')">
           <span class="mtier-amt" style="font-size:0.95rem">Choose my own monthly amount</span>
         </button>
-        <div id="m1-custom-monthly-wrap" style="display:none;margin-bottom:0.5rem">
+        <div id="m1-custom-monthly-wrap" style="display:none;margin-bottom:0.5rem;visibility:hidden;height:0;overflow:hidden">
           <div class="custom-wrap" style="margin-bottom:0.3rem">
             <span class="sym">$</span>
             <input type="number" class="custom-input" id="m1-custom-monthly-val" placeholder="Enter monthly amount" min="1" oninput="m1UpdateCalc('monthly')">
@@ -611,6 +611,38 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; height: 66px; di
         </div>
         <button class="donate-btn" onclick="m1Donate()">Donate now</button>
         <p class="mfootnote">Billed monthly via Stripe. Cancel anytime.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL 2: Frequency chooser (for custom calculator amount) -->
+<div class="modal-overlay" id="modal2-overlay" onclick="closeModal2Outside(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal2()">&#x2715;</button>
+    <h3 class="modal-title">How would you like to give?</h3>
+    <p class="modal-sub" id="m2-sub">Choose one-time or monthly to continue.</p>
+    <div class="mtab-row">
+      <button class="mtab active" id="m2-tab-once" onclick="m2SwitchTab('once')">Give once</button>
+      <button class="mtab" id="m2-tab-monthly" onclick="m2SwitchTab('monthly')">Give monthly</button>
+    </div>
+    <div class="mpanels-wrap">
+      <div class="mbubble" id="m2-bubble"></div>
+      <div class="mpanel" id="m2-panel-once">
+        <p style="font-size:0.85rem;color:var(--text-mid);margin-bottom:1.25rem;line-height:1.6" id="m2-once-desc">A single one-time donation.</p>
+        <button class="donate-btn" style="margin-bottom:0.75rem" onclick="m2Donate('once')">Continue to one-time checkout</button>
+        <button class="post-toggle" style="display:flex;margin:0 auto" onclick="closeModal2();openModal1()">
+          <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          Back to donation options
+        </button>
+      </div>
+      <div class="mpanel" id="m2-panel-monthly" style="display:none">
+        <p style="font-size:0.85rem;color:var(--text-mid);margin-bottom:1.25rem;line-height:1.6" id="m2-monthly-desc">Billed monthly. Cancel anytime.</p>
+        <button class="donate-btn" style="margin-bottom:0.75rem" onclick="m2Donate('monthly')">Continue to monthly checkout</button>
+        <button class="post-toggle" style="display:flex;margin:0 auto" onclick="closeModal2();openModal1()">
+          <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          Back to donation options
+        </button>
       </div>
     </div>
   </div>
@@ -714,7 +746,7 @@ async function idxDonate() {
     if (!contentType.includes("application/json")) {
       const text = await res.text();
       console.error("Non-JSON response:", text);
-      alert("Payment service unavailable. Please try again shortly or email fundnatalie@sorensn.com");
+      alert("Payment service unavailable. Please try again shortly or email natalie@sorensn.com");
       return;
     }
 
@@ -723,11 +755,11 @@ async function idxDonate() {
       window.location.href = data.url;
     } else {
       console.error("Stripe error:", data.error);
-      alert("Error: " + (data.error || "Something went wrong. Please email fundnatalie@sorensn.com"));
+      alert("Error: " + (data.error || "Something went wrong. Please email natalie@sorensn.com"));
     }
   } catch (err) {
     console.error(err);
-    alert("Something went wrong. Please try again or email fundnatalie@sorensn.com");
+    alert("Something went wrong. Please try again or email natalie@sorensn.com");
   } finally {
     btn.textContent = "Donate now";
     btn.disabled = false;
@@ -782,25 +814,9 @@ function m1Select(amount, mode, btn) {
   btn.classList.add("mtier-active");
 }
 
-async function m1ShowCustom(mode) {
-  document.querySelectorAll("#modal1-overlay .mtier").forEach(b => b.classList.remove("mtier-active"));
-  m1Amount = "custom";
-  m1Mode = mode;
-  if (mode === "once") {
-    const btn = document.getElementById("m1-custom-once-btn");
-    const wrap = document.getElementById("m1-custom-once-wrap");
-    const isOpen = wrap.style.display !== "none";
-    wrap.style.display = isOpen ? "none" : "block";
-    btn.classList.toggle("mtier-active", !isOpen);
-    if (!isOpen) document.getElementById("m1-custom-once-val").focus();
-  } else {
-    const btn = document.getElementById("m1-custom-monthly-btn");
-    const wrap = document.getElementById("m1-custom-monthly-wrap");
-    const isOpen = wrap.style.display !== "none";
-    wrap.style.display = isOpen ? "none" : "block";
-    btn.classList.toggle("mtier-active", !isOpen);
-    if (!isOpen) document.getElementById("m1-custom-monthly-val").focus();
-  }
+function m1ShowCustom(mode) {
+  var url = mode === "once" ? "https://donate.stripe.com/dRm6oI5M18YUc0nfpjcbC09" : "https://donate.stripe.com/9B6bJ25M1b72c0n90VcbC00";
+  window.open(url, "_blank");
 }
 
 function m1UpdateCalc(mode) {
@@ -821,70 +837,64 @@ function m1UpdateCalc(mode) {
   }
 }
 
-async function m1Donate() {
-  const activePanel = m1Mode === "once" ? "m1-panel-once" : "m1-panel-monthly";
-  const btn = document.querySelector("#" + activePanel + " .donate-btn");
-
-  // Fixed tier — go straight to Stripe link
+function m1Donate() {
   if (m1Amount !== null && m1Amount !== "custom") {
     const links = m1Mode === "once" ? STRIPE_ONCE : STRIPE_MONTHLY;
     const url = links[m1Amount];
     if (url) { window.open(url, "_blank"); return; }
   }
+  // Custom — go straight to Stripe custom amount page
+  var url = m1Mode === "once" ? "https://donate.stripe.com/dRm6oI5M18YUc0nfpjcbC09" : "https://donate.stripe.com/9B6bJ25M1b72c0n90VcbC00";
+  window.open(url, "_blank");
+}
+// Modal 2
+var m2Amount = null;
+var m2Mode = "once";
 
-  // Custom amount — read from visible input
-  const inputId = m1Mode === "once" ? "m1-custom-once-val" : "m1-custom-monthly-val";
-  const customVal = parseFloat(document.getElementById(inputId).value);
-  if (!customVal || customVal < 1) { return; }
+function openModal2(amount) {
+  m2Amount = amount; m2Mode = "once";
+  var amtLabel = amount ? ("$" + amount) : "your chosen amount";
+  document.getElementById("m2-sub").textContent = amount
+    ? ("You would like to donate " + amtLabel + ". How would you like to give?")
+    : "Choose one-time or monthly to continue.";
+  document.getElementById("m2-once-desc").textContent = amount
+    ? (amtLabel + " as a one-time donation.")
+    : "A single one-time donation in your chosen amount.";
+  document.getElementById("m2-monthly-desc").textContent = amount
+    ? (amtLabel + " per month, billed monthly. Cancel anytime.")
+    : "A recurring monthly donation. Cancel anytime.";
+  document.getElementById("m2-panel-once").style.display = "block";
+  document.getElementById("m2-panel-monthly").style.display = "none";
+  document.getElementById("m2-tab-once").classList.add("active");
+  document.getElementById("m2-tab-monthly").classList.remove("active");
+  document.getElementById("modal2-overlay").classList.add("open");
+  document.body.style.overflow = "hidden";
+}
 
-  if (btn) { btn.textContent = "Loading..."; btn.disabled = true; }
-  try {
-    const res = await fetch("/api/create-checkout", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ amount: customVal, mode: m1Mode })
-    });
-    const contentType = res.headers.get("content-type") || "";
-    if (!contentType.includes("application/json")) {
-      alert("Payment service unavailable. Please email fundnatalie@sorensn.com");
-      return;
-    }
-    const data = await res.json();
-    if (data.url) {
-      window.location.href = data.url;
-    } else {
-      alert("Error: " + (data.error || "Something went wrong."));
-    }
-  } catch (err) {
-    console.error(err);
-    alert("Something went wrong. Please try again or email fundnatalie@sorensn.com");
-  } finally {
-    if (btn) { btn.textContent = "Donate now"; btn.disabled = false; }
-  }
+function closeModal2() {
+  document.getElementById("modal2-overlay").classList.remove("open");
+  document.body.style.overflow = "";
+}
+function closeModal2Outside(e) { if (e.target === document.getElementById("modal2-overlay")) closeModal2(); }
+
+
+function m2SwitchTab(tab) {
+  m2Mode = tab;
+  document.getElementById("m2-panel-once").style.display = tab === "once" ? "block" : "none";
+  document.getElementById("m2-panel-monthly").style.display = tab === "monthly" ? "block" : "none";
+  document.getElementById("m2-tab-once").classList.toggle("active", tab === "once");
+  document.getElementById("m2-tab-monthly").classList.toggle("active", tab !== "once");
+}
+
+function m2Donate(mode) {
+  var url = mode === "once" ? STRIPE_ONCE.custom : STRIPE_MONTHLY.custom;
+  window.open(url, "_blank");
 }
 
 // ── Custom amount input reveal ───────────────────────────────────────────────
 function showCustomInput(mode) {
-  // Deselect any fixed tier
-  idxAmount = null;
-  idxMode = mode;
-  document.querySelectorAll("#idx-panel-once .tier-btn, #idx-panel-monthly .tier-btn").forEach(b => b.classList.remove("active"));
-
-  if (mode === "once") {
-    const btn = document.getElementById("custom-once-btn");
-    const wrap = document.getElementById("custom-once-input");
-    const isOpen = wrap.style.display !== "none";
-    wrap.style.display = isOpen ? "none" : "block";
-    btn.classList.toggle("active", !isOpen);
-    if (!isOpen) document.getElementById("custom-once-val").focus();
-  } else {
-    const btn = document.getElementById("custom-monthly-btn");
-    const wrap = document.getElementById("custom-monthly-input");
-    const isOpen = wrap.style.display !== "none";
-    wrap.style.display = isOpen ? "none" : "block";
-    btn.classList.toggle("active", !isOpen);
-    if (!isOpen) document.getElementById("custom-monthly-val").focus();
-  }
+  var url = mode === "once" ? "https://donate.stripe.com/dRm6oI5M18YUc0nfpjcbC09" : "https://donate.stripe.com/9B6bJ25M1b72c0n90VcbC00";
+  window.open(url, "_blank");
 }
 
 function updateCustomCalc(mode) {
@@ -946,7 +956,7 @@ async function idxDonate() {
     if (!contentType.includes("application/json")) {
       const text = await res.text();
       console.error("Non-JSON response:", text);
-      alert("Payment service unavailable. Please try again shortly or email fundnatalie@sorensn.com");
+      alert("Payment service unavailable. Please try again shortly or email natalie@sorensn.com");
       return;
     }
 
@@ -955,11 +965,11 @@ async function idxDonate() {
       window.location.href = data.url;
     } else {
       console.error("Stripe error:", data.error);
-      alert("Error: " + (data.error || "Something went wrong. Please email fundnatalie@sorensn.com"));
+      alert("Error: " + (data.error || "Something went wrong. Please email natalie@sorensn.com"));
     }
   } catch (err) {
     console.error(err);
-    alert("Something went wrong. Please try again or email fundnatalie@sorensn.com");
+    alert("Something went wrong. Please try again or email natalie@sorensn.com");
   } finally {
     btn.textContent = "Donate now";
     btn.disabled = false;
